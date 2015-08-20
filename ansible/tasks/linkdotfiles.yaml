@@ -7,3 +7,4 @@
           force=yes
     with_items:
         - zshrc
+        - gitconfig
