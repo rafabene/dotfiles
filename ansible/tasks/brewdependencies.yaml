@@ -1,0 +1,22 @@
+  - name: Get sure WGET is available
+    homebrew: name=wget state=present
+    
+  - name: Make suere GIT is available
+    homebrew: name=git state=present
+  
+  - name: Make sure CURL is available
+    homebrew: name=curl state=present
+
+  - name: Make sure ZSH is available
+    homebrew: name=zsh state=present
+    
+  - name: Make sure ZSH completions is available
+    homebrew: name=zsh-completions state=present  
+    
+  - name: Retrieve the current shell
+    command: echo $SHELL
+    register: shell
+    
+  - name: Set the Default shell to ZSH
+    command: chsh -s /bin/zsh
+    when: shell.stdout != "/bin/zsh"

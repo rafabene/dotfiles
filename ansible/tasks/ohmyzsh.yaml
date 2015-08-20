@@ -1,0 +1,4 @@
+---
+  - name: Clone oh-my-zsh repo
+    git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest={{ lookup('env','HOME') }}/.oh-my-zsh depth=1
+    

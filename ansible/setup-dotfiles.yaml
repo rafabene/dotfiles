@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  
+  pre_tasks:
+    - include: tasks/brewdependencies.yaml
+      when: ansible_distribution == "MacOSX"
+
+  roles:
+    #- { role: common }
+
+  tasks:
+    - include: tasks/linkdotfiles.yaml
+    - include: tasks/ohmyzsh.yaml

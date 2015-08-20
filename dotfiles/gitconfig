@@ -1,0 +1,15 @@
+[color]
+	ui = true
+	diff = true
+[user]
+	name = Rafael Benevides
+	email = rafabene@gmail.com
+[core]
+	whitespace = cr-at-eol
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = "diffmerge.sh --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+[diff]
+	tool = vimdiff
