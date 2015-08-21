@@ -10,4 +10,5 @@
 
   tasks:
     - include: tasks/linkdotfiles.yaml
+    - include: tasks/vim.yaml
     - include: tasks/ohmyzsh.yaml

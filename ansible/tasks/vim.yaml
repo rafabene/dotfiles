@@ -1,0 +1,19 @@
+---
+  #Link VIM dot files
+  - name: Symlink VIM dotfiles
+    file: src={{ dotfilespath }}/dotfiles/vim/{{ item }}
+          dest=~/.vim/{{ item }}
+          state=link
+          force=yes
+    with_items:
+        - colors.vim
+        - config.vim
+        - functions.vim
+        - autocommands.vim
+        - plugins.vim
+
+  - name: Installing the plugin Vundle to manage the vim plugins
+    git: repo=https://github.com/gmarik/Vundle.vim.git dest={{ lookup('env','HOME') }}/.vim/bundle/Vundle.vim
+
+  - name: Launching vim to install the plugins
+    command: vim +PluginInstall +qall

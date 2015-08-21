@@ -8,3 +8,4 @@
     with_items:
         - zshrc
         - gitconfig
+        - vimrc
