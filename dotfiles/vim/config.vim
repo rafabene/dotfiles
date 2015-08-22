@@ -85,6 +85,7 @@ set title " Add the window title with the name of the file that is editing
 set guioptions-=T " disable toolbar
 set guioptions-=r " disable right-hand scrollbar
 set guioptions-=L " disable left-hand scrollbar
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14 "make sure to escape the spaces in the name properly
 set lazyredraw " don't update the display while executing macros
 set number " show the current line number
 set relativenumber " show the line number relative to the line with the cursor

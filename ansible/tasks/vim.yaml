@@ -1,8 +1,12 @@
 ---
+  - name: Create .vim directory
+    file: path={{ lookup('env','HOME') }}/.vim/
+          state=directory
+
   #Link VIM dot files
   - name: Symlink VIM dotfiles
     file: src={{ dotfilespath }}/dotfiles/vim/{{ item }}
-          dest=~/.vim/{{ item }}
+          dest={{ lookup('env','HOME') }}/.vim/{{ item }}
           state=link
           force=yes
     with_items:
@@ -11,6 +15,7 @@
         - functions.vim
         - autocommands.vim
         - plugins.vim
+        - shortcuts.vim
 
   - name: Installing the plugin Vundle to manage the vim plugins
     git: repo=https://github.com/gmarik/Vundle.vim.git dest={{ lookup('env','HOME') }}/.vim/bundle/Vundle.vim

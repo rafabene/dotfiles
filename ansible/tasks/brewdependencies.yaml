@@ -13,6 +13,9 @@
   - name: Make sure ZSH completions is available
     homebrew: name=zsh-completions state=present
 
+  - name: Make sure CTAGS completions is available
+    homebrew: name=ctags state=present
+
   - name: Install MacVim
     homebrew: name=macvim state=linked install_options=--with-override-system-vim
 

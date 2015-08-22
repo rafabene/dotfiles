@@ -2,3 +2,9 @@
 "  NERDTree
 "-------------------------------------------------------------------------------
 autocmd VimEnter * call g:OpenNerdTree()
+
+"-------------------------------------------------------------------------------
+"  Open file where it was left off
+"-------------------------------------------------------------------------------
+autocmd BufWinLeave * mkview
+autocmd BufWinEnter * silent loadview
