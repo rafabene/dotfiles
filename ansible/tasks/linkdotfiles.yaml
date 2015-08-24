@@ -8,4 +8,5 @@
     with_items:
         - zshrc
         - gitconfig
+        - gitignore
         - vimrc

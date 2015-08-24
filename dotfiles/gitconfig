@@ -6,6 +6,7 @@
 	email = rafabene@gmail.com
 [core]
 	whitespace = cr-at-eol
+	excludesfile = /Users/rafaelbenevides/.gitignore
 [merge]
 	tool = diffmerge
 [mergetool "diffmerge"]
