@@ -22,10 +22,17 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 "-------------------------------------------------------------------------------
+"  Go
+"-------------------------------------------------------------------------------
+Plugin 'fatih/vim-go'
+Plugin 'garyburd/go-explorer'
+
+"-------------------------------------------------------------------------------
 "  Search & Navigation
 "-------------------------------------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Valloric/YouCompleteMe'
 
 "-------------------------------------------------------------------------------
 "  Text & Utilities
