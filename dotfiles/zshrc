@@ -30,12 +30,13 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git cp command-not-found git-extras gnu-utils history pip python ruby screen ssh-agent svn)
 
+#Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export GOPATH=$HOME/go
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
+
+#Export PATH variable
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOPATH/bin 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export GOPATH=$HOME/go
-
