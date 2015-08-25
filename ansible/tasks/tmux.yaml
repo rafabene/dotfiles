@@ -1,0 +1,8 @@
+---
+  #Link tmux-start.sh to /usr/local/bin/tm files
+  - name: Create link to tmux
+    file: src={{ dotfilespath }}/utils/tmux-start.sh
+          dest=/usr/local/bin/tm
+          state=link
+          force=yes
+          mode=a+x

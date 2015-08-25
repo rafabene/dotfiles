@@ -10,3 +10,4 @@
         - gitconfig
         - gitignore
         - vimrc
+        - tmux.conf

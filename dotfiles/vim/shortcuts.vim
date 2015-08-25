@@ -66,6 +66,11 @@ map <leader>bD :bd!<cr>| " Forces to delete the buffer
 " Moving around the buffers
 map <leader>bh :bp<cr>|   "Move to the previous buffer
 map <leader>bl :bn<cr>|   " Move to the next buffer
+map <M-h> :bp<cr>| " go to the previous buffer. Map to Alt+h
+map <M-l> :bn<cr>| " go to the next buffer. Map to Alt+l
+map ˙ :bp<cr>| " go to the previous buffer. Map to Alt+h
+map ¬ :bn<cr>| " go to the next buffer. Map to Alt+l
+
 map <leader>bs <c-^><cr>| " Switch between buffers
 
 "-------------------------------------------------------------------------------
@@ -120,10 +125,6 @@ map <leader>to :tabonly<cr>|  " close all others tab but this
 " Moving betwen tabs
 map <leader>th :tabp<cr>| " go to the previous tab
 map <leader>tl :tabn<cr>| " go to the next tab
-map <M-h> :tabp<cr>| " go to the previous tab. Map to Alt+h
-map <M-l> :tabn<cr>| " go to the next tab. Map to Alt+l
-map ˙ :tabp<cr>| " go to the previous tab. Map to Alt+h
-map ¬ :tabn<cr>| " go to the next tab. Map to Alt+l
 
 " Moving the tabs
 map <leader>tmh :tabmove -1<cr>| " move tab to the left

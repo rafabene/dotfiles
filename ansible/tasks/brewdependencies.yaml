@@ -19,6 +19,9 @@
   - name: Make sure CMAKE  is available
     homebrew: name=cmake state=present
 
+  - name: Make sure TMUX  is available
+    homebrew: name=tmux state=present
+
   - name: Install MacVim
     homebrew: name=macvim state=linked install_options=--with-override-system-vim
 
