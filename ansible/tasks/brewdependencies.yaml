@@ -22,6 +22,9 @@
   - name: Make sure TMUX  is available
     homebrew: name=tmux state=present
 
+  - name: Make sure reattach-to-user-namespace is available
+    homebrew: name=reattach-to-user-namespace state=present
+
   - name: Install MacVim
     homebrew: name=macvim state=linked install_options=--with-override-system-vim
 
@@ -32,4 +35,5 @@
   - name: Set the Default shell to ZSH
     command: chsh -s /bin/zsh
     when: shell.stdout != "/bin/zsh"
+    
 

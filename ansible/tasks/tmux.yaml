@@ -6,3 +6,11 @@
           state=link
           force=yes
           mode=a+x
+
+  #Link tmux-start.sh to /usr/local/bin/tm files
+  - name: Create link to tmux_clipboard.sh
+    file: src={{ dotfilespath }}/utils/tmux_clipboard.sh
+          dest=/usr/local/bin/tmux_clipboard.sh
+          state=link
+          force=yes
+          mode=a+x
