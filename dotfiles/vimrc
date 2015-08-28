@@ -28,6 +28,20 @@ Plugin 'fatih/vim-go'
 Plugin 'garyburd/go-explorer'
 
 "-------------------------------------------------------------------------------
+"  Html
+"-------------------------------------------------------------------------------
+Plugin 'othree/html5.vim'
+Plugin 'mattn/emmet-vim'
+
+"-------------------------------------------------------------------------------
+"  Javascript
+"-------------------------------------------------------------------------------
+Plugin 'pangloss/vim-javascript'
+Plugin 'burnettk/vim-angular'
+Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'kchmck/vim-coffee-script'"
+
+"-------------------------------------------------------------------------------
 "  Search & Navigation
 "-------------------------------------------------------------------------------
 Plugin 'scrooloose/nerdtree'

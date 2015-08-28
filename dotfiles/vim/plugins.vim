@@ -4,6 +4,12 @@
 nmap <F8> :TagbarToggle<CR>
 
 "-------------------------------------------------------------------------------
+"  Emmet Settings
+"-------------------------------------------------------------------------------
+let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_expandabbr_key='<c-e>'
+
+"-------------------------------------------------------------------------------
 "  Vim-go
 "-------------------------------------------------------------------------------
 let g:go_highlight_functions = 1
@@ -28,9 +34,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 "-------------------------------------------------------------------------------
-"  Tpope Utilities
+"  javascript-libraries-syntax.vim Settingss
 "-------------------------------------------------------------------------------
-Plugin 'tpope/vim-commentary'
+let g:used_javascript_libs = 'jquery, angularjs, angularui, angularuirouter'
 
 "-------------------------------------------------------------------------------
 "  Vimux
