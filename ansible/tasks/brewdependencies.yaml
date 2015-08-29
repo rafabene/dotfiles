@@ -22,6 +22,9 @@
   - name: Make sure TMUX  is available
     homebrew: name=tmux state=present
 
+  - name: Make sure AG  is available
+    homebrew: name=ag state=present
+
   - name: Make sure reattach-to-user-namespace is available
     homebrew: name=reattach-to-user-namespace state=present
 
