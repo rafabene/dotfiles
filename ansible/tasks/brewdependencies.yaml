@@ -28,6 +28,9 @@
   - name: Install MacVim
     homebrew: name=macvim state=linked install_options=--with-override-system-vim
 
+  - name: Install Vim with lua
+    homebrew: name=vim state=latest
+
   - name: Retrieve the current shell
     command: echo $SHELL
     register: shell

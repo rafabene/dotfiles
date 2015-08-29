@@ -1,5 +1,5 @@
 set nocompatible
-filetype off
+filetype plugin on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -8,6 +8,11 @@ call vundle#begin()
 "  Vundle manage Vundle, required
 "-------------------------------------------------------------------------------
 Plugin 'gmarik/Vundle.vim'
+
+"-------------------------------------------------------------------------------
+"  Auto Complete features
+"-------------------------------------------------------------------------------
+Plugin 'AutoComplPop'
 
 "-------------------------------------------------------------------------------
 "  Colors and themes
@@ -36,8 +41,8 @@ Plugin 'mattn/emmet-vim'
 "-------------------------------------------------------------------------------
 "  Javascript
 "-------------------------------------------------------------------------------
-Plugin 'pangloss/vim-javascript'
 Plugin 'burnettk/vim-angular'
+Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 "Plugin 'kchmck/vim-coffee-script'"
 
@@ -46,7 +51,7 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 "-------------------------------------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
 
 "-------------------------------------------------------------------------------
 "  Text & Utilities
