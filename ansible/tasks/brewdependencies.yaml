@@ -22,17 +22,30 @@
   - name: Make sure TMUX  is available
     homebrew: name=tmux state=present
 
-  - name: Make sure AG  is available
+  - name: Make sure AG is available
     homebrew: name=ag state=present
 
   - name: Make sure reattach-to-user-namespace is available
     homebrew: name=reattach-to-user-namespace state=present
 
   - name: Install MacVim
-    homebrew: name=macvim state=linked install_options=--with-override-system-vim
+    homebrew: name=macvim state=linked install_options=with-override-system-vim
+
+  - name: Verify if VIM has lua support
+    shell: vim --version|grep -e "+lua"
+    args:
+      warn: false
+    ignore_errors: yes
+    register: luaspt
+    failed_when: luaspt.stderr
+
+  - name: Remove Vim without lua
+    homebrew: name=vim state=absent
+    when: luaspt.rc != 0
 
   - name: Install Vim with lua
-    homebrew: name=vim state=latest
+    homebrew: name=vim state=latest install_options=with-lua
+    when: luaspt.rc != 0
 
   - name: Retrieve the current shell
     command: echo $SHELL
@@ -41,5 +54,5 @@
   - name: Set the Default shell to ZSH
     command: chsh -s /bin/zsh
     when: shell.stdout != "/bin/zsh"
-    
+
 

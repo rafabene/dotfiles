@@ -11,19 +11,16 @@ set nowritebackup
 set noswapfile
 
 "-------------------------------------------------------------------------------
-"  Support for paste from clipboard (with middle click)
-"-------------------------------------------------------------------------------
-set mouse=
-
-"-------------------------------------------------------------------------------
 "  Buffer and Edit Settings
 "-------------------------------------------------------------------------------
 set autoread " Automatically read a file that has changed on disk
 set backspace=indent,eol,start " backspace working like other apps
 set hidden " Allow unsaved buffers to be put in background
 set clipboard=unnamed " copy default to clipboard
+set completeopt-=preview
 " set cursorline
 set cpoptions+=$ " put $ at the end of the changed word
+let loaded_matchparen = 1 " disable the match for parentheses
 
 
 "-------------------------------------------------------------------------------
