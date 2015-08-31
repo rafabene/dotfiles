@@ -1,16 +1,4 @@
 ---
-  #Link tmux-start.sh to /usr/local/bin/tm files
-  - name: Create link to tmux
-    file: src={{ dotfilespath }}/utils/tmux-start.sh
-          dest=/usr/local/bin/tm
-          state=link
-          force=yes
-          mode=a+x
+  - name: Installing TPM (tmux plugin manager)
+    git: repo=https://github.com/tmux-plugins/tpm dest={{ lookup('env','HOME') }}/.tmux/plugins/tpm
 
-  #Link tmux-start.sh to /usr/local/bin/tm files
-  - name: Create link to tmux_clipboard.sh
-    file: src={{ dotfilespath }}/utils/tmux_clipboard.sh
-          dest=/usr/local/bin/tmux_clipboard.sh
-          state=link
-          force=yes
-          mode=a+x

@@ -66,10 +66,10 @@ map <leader>bD :bd!<cr>| " Forces to delete the buffer
 " Moving around the buffers
 map <leader>bh :bp<cr>|   "Move to the previous buffer
 map <leader>bl :bn<cr>|   " Move to the next buffer
-map <M-h> :bp<cr>| " go to the previous buffer. Map to Alt+h
-map <M-l> :bn<cr>| " go to the next buffer. Map to Alt+l
-map ˙ :bp<cr>| " go to the previous buffer. Map to Alt+h
-map ¬ :bn<cr>| " go to the next buffer. Map to Alt+l
+map <M-[> :bp<cr>| " go to the previous buffer. Map to Alt+[
+map <M-]> :bn<cr>| " go to the next buffer. Map to Alt+]
+map “ :bp<cr>| " go to the previous buffer. Map to Alt+[
+map ‘ :bn<cr>| " go to the next buffer. Map to Alt+]
 
 map <leader>bs <c-^><cr>| " Switch between buffers
 
