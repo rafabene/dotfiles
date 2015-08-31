@@ -14,6 +14,17 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 autocmd FocusLost * :wa
 
 "-------------------------------------------------------------------------------
+"  Settings for Filetype
+"-------------------------------------------------------------------------------
+autocmd FileType help wincmd J " Open help in bottom window
+
+autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType go highlight SpecialKey ctermbg=bg guibg=bg
+
+autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType java highlight SpecialKey ctermbg=bg guibg=bg
+
+"-------------------------------------------------------------------------------
 "  NERDTree
 "-------------------------------------------------------------------------------
 autocmd VimEnter * call g:OpenNerdTree()
