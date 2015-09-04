@@ -5,6 +5,11 @@ let g:acp_behaviorUserDefinedMeets = 'acp#meetsForKeyword'
 let g:acp_behaviorUserDefinedFunction = 'syntaxcomplete#Complete'
 
 "-------------------------------------------------------------------------------
+"  Auto close tag
+"-------------------------------------------------------------------------------
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
+
+"-------------------------------------------------------------------------------
 "  Control P
 "-------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'

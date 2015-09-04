@@ -57,6 +57,8 @@ Plugin 'kien/ctrlp.vim'
 "  Text & Utilities
 "-------------------------------------------------------------------------------
 Plugin 'majutsushi/tagbar'
+Plugin 'Townk/vim-autoclose'
+Plugin 'alvan/vim-closetag'
 
 "-------------------------------------------------------------------------------
 "  Tmux integration
