@@ -33,6 +33,15 @@ plugins=(brew cp docker docker-compose git git-extras git-remote-branch gnu-util
 #Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+#Configure Prefered keybindings
+bindkey '^R' history-incremental-search-backward
+bindkey "^A" beginning-of-line
+bindkey "^D" delete-char
+bindkey "^E"  end-of-line
+bindkey ' ' magic-space
+bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word
+bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
+
 export GOPATH=$HOME/go
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/
 
