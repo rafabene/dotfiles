@@ -1,3 +1,6 @@
+  - name: Get sure terminal-notifier is available
+    homebrew: name=terminal-notifier state=present
+
   - name: Get sure WGET is available
     homebrew: name=wget state=present
 

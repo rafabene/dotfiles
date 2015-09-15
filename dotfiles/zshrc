@@ -28,7 +28,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew cp docker docker-compose git git-extras git-remote-branch gnu-utils go grunt history mvn nmap postgres sudo ssh-agent tmux tmuxinator vagrant vi-mode web-search)
+plugins=(bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git-prompt git git-extras git-remote-branch gnu-utils go grunt history mvn nmap node npm postgres sudo ssh-agent tmux tmuxinator vagrant vi-mode web-search)
 
 #Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -46,6 +46,5 @@ export GOPATH=$HOME/go
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/
 
 #Export PATH variable
-export PATH=$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOPATH/bin
+export PATH=$HOME/.rvm/bin:$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOPATH/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

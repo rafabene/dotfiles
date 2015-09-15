@@ -1,7 +1,8 @@
 "-------------------------------------------------------------------------------
-"  Delete trailing spaces before saving
+"  Delete trailing spaces and indent before saving
 "-------------------------------------------------------------------------------
-autocmd BufWritePre * :%s/\s\+$//ge
+" autocmd BufWritePre *  :%s/\s\+$//ge | :argdo normal mzgg=G`z
+autocmd BufWritePre *  :%s/\s\+$//ge
 
 "-------------------------------------------------------------------------------
 "  Remember last position of a file
