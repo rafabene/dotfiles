@@ -1,0 +1,11 @@
+---
+  - name: Create .did directory
+    file: path={{ lookup('env','HOME') }}/.did/
+          state=directory
+
+  #Link VIM dot files
+  - name: Symlink VIM dotfiles
+    file: src={{ dotfilespath }}/dotfiles/did/config
+          dest={{ lookup('env','HOME') }}/.did/config
+          state=link
+          force=yes

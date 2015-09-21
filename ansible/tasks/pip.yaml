@@ -1,0 +1,2 @@
+  - name: Get sure DID is available
+    pip: name=did state=present
