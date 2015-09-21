@@ -43,7 +43,7 @@ bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
 
 export GOPATH=$HOME/go
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/
 
 #Export PATH variable
 export PATH=$HOME/.rvm/bin:$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOPATH/bin

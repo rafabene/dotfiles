@@ -14,5 +14,3 @@
     - include: tasks/vim.yaml
     - include: tasks/ohmyzsh.yaml
     - include: tasks/tmux.yaml
-    - include: tasks/pip.yaml
-    - include: tasks/did.yaml
