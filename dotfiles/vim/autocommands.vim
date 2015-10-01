@@ -10,9 +10,10 @@ autocmd BufWritePre *  :%s/\s\+$//ge
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "-------------------------------------------------------------------------------
-"  Auto save
+"  Auto save and Auto Reload
 "-------------------------------------------------------------------------------
-autocmd FocusLost * :wa
+autocmd FocusGained, BufEnter * :silent! !
+autocmd FocusLost, WinLeave * :silent! w
 
 "-------------------------------------------------------------------------------
 "  Settings for Filetype

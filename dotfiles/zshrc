@@ -28,7 +28,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git git-extras git-remote-branch gnu-utils go grunt history mvn nmap node npm postgres sudo ssh-agent tmux tmuxinator vagrant vi-mode web-search)
+plugins=(bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git git-extras git-remote-branch gnu-utils go grunt history history-substring-search man mvn nmap node npm nvm postgres rake rvm sudo ssh-agent tmux tmuxinator vagrant web-search)
 
 #Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -42,6 +42,11 @@ bindkey ' ' magic-space
 bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
 
+export DEFAULT_USER=rafaelbenevides
+export KUBERNETES_DOMAIN=vagrant.f8
+export KUBERNETES_MASTER=https://172.28.128.4:8443
+export KUBERNETES_NAMESPACE=default
+export DOCKER_HOST=tcp://vagrant.f8:2375
 export GOPATH=$HOME/go
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/
 
