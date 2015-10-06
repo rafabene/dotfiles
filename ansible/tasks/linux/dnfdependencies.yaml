@@ -10,8 +10,8 @@
   - name: Linux dnf - Make sure ZSH is available
     dnf: name=zsh state=present
 
-  - name: Linux dnf - Make sure ZSH completions is available
-    dnf: name=zsh-completions state=present
+  - name: Linux dnf - Make sure Docker ZSH completions is available
+    dnf: name=docker-zsh-completion state=present
 
   - name: Linux dnf - Make sure CTAGS  is available
     dnf: name=ctags state=present
@@ -22,9 +22,6 @@
   - name: Linux dnf - Make sure TMUX  is available
     dnf: name=tmux state=present
 
-  - name: Linux dnf - Make sure AG is available
-    dnf: name=ag state=present
-
   - name: Linux shell - Retrieve the current shell
     command: echo $SHELL
     register: shell
@@ -32,5 +29,6 @@
   - name: Linux shell - Set the Default shell to ZSH
     command: usermod -s /bin/zsh {{ lookup('env','USER') }}
     when: shell.stdout != "/bin/zsh"
-
+    become: yes
+    become_method: sudo
 
