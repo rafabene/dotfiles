@@ -1,0 +1,36 @@
+  - name: Get sure WGET is available
+    dnf: name=wget state=present
+
+  - name: Make suere GIT is available
+    dnf: name=git state=present
+
+  - name: Make sure CURL is available
+    dnf: name=curl state=present
+
+  - name: Make sure ZSH is available
+    dnf: name=zsh state=present
+
+  - name: Make sure ZSH completions is available
+    dnf: name=zsh-completions state=present
+
+  - name: Make sure CTAGS  is available
+    dnf: name=ctags state=present
+
+  - name: Make sure CMAKE  is available
+    dnf: name=cmake state=present
+
+  - name: Make sure TMUX  is available
+    dnf: name=tmux state=present
+
+  - name: Make sure AG is available
+    dnf: name=ag state=present
+
+  - name: Retrieve the current shell
+    command: echo $SHELL
+    register: shell
+
+  - name: Set the Default shell to ZSH
+    command: usermod -s /bin/zsh {{ lookup('env','USER') }}
+    when: shell.stdout != "/bin/zsh"
+
+
