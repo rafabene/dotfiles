@@ -50,11 +50,11 @@
     homebrew: name=vim state=latest install_options=with-lua
     when: luaspt.rc != 0
 
-  - name: Mac shell: Retrieve the current shell
+  - name: Mac shell -  Retrieve the current shell
     command: echo $SHELL
     register: shell
 
-  - name: Mac shell: Set the Default shell to ZSH
+  - name: Mac shell -  Set the Default shell to ZSH
     command: chsh -s /bin/zsh
     when: shell.stdout != "/bin/zsh"
 
