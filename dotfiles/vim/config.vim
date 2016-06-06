@@ -21,7 +21,8 @@ set completeopt-=preview
 " set cursorline
 set cpoptions+=$ " put $ at the end of the changed word
 " let loaded_matchparen = 1 " disable the match for parentheses
-
+" spell checker
+set spell spelllang=en_us
 
 "-------------------------------------------------------------------------------
 "  Enconding Settings
