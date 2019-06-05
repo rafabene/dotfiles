@@ -28,7 +28,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git git-extras git-remote-branch gnu-utils go grunt history history-substring-search kubectl oc man minikube nmap node npm nvm oc postgres rake rvm sudo tmux tmuxinator vagrant web-search)
+plugins=(aws bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git git-extras git-remote-branch gnu-utils go grunt history history-substring-search kubectl oc man minikube nmap node npm nvm oc postgres rake rvm ssh-agent sudo tmux tmuxinator vagrant web-search)
 
 #Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
