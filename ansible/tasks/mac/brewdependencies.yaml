@@ -31,8 +31,8 @@
   - name: Mac brew -  Make sure reattach-to-user-namespace is available
     homebrew: name=reattach-to-user-namespace state=present
 
-  - name: Mac brew - Install MacVim
-    homebrew: name=macvim state=linked install_options=with-override-system-vim
+    #  - name: Mac brew - Install MacVim
+    #homebrew: name=macvim state=linked install_options=with-override-system-vim
 
   - name: Mac shell:Verify if VIM has lua support
     shell: vim --version|grep -e "+lua"

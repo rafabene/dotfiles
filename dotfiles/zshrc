@@ -28,7 +28,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git git-extras git-remote-branch gnu-utils go grunt history history-substring-search man mvn nmap node npm nvm oc postgres rake rvm sudo ssh-agent tmux tmuxinator vagrant web-search)
+plugins=(aws bgnotify boot2docker bower brew bundler cp colorize dirhistory docker docker-compose gem git git-extras git-remote-branch gnu-utils go grunt history history-substring-search kubectl oc man minikube nmap node npm nvm oc postgres rake rvm sudo tmux tmuxinator vagrant web-search)
 
 #Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -43,10 +43,13 @@ bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
 
 export DEFAULT_USER=rafaelbenevides
-
-export GOPATH=$HOME/go
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/
-export FORGE_HOME=~/java/forge/
+export GRAALVM_HOME=/Users/rafael/java/graalvm-ce-1.0.0-rc16/Contents/Home
 
 #Export PATH variable
-export PATH=$HOME/.rvm/bin:$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$GOPATH/bin:$FORGE_HOME/bin
+export PATH=:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/rafael/.sdkman"
+[[ -s "/Users/rafael/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rafael/.sdkman/bin/sdkman-init.sh"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
