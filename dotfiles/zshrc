@@ -43,7 +43,7 @@ bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
 
 export DEFAULT_USER=rafaelbenevides
-export GRAALVM_HOME=/Users/rafael/java/graalvm-ce-1.0.0-rc16/Contents/Home
+export GRAALVM_HOME=/Users/rafael/java/graalvm-ce-19.1.0/Contents/Home
 
 #Export PATH variable
 export PATH=:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -53,3 +53,7 @@ export SDKMAN_DIR="/Users/rafael/.sdkman"
 [[ -s "/Users/rafael/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rafael/.sdkman/bin/sdkman-init.sh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
