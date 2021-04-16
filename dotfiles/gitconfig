@@ -4,13 +4,17 @@
 [user]
 	name = Rafael Benevides
 	email = rafabene@gmail.com
+	signingkey = CF9BAA5F4033CF99
 [core]
 	whitespace = cr-at-eol
 	excludesfile = /Users/rafaelbenevides/.gitignore
 [merge]
 	tool = diffmerge
 [mergetool "diffmerge"]
-	cmd = "diffmerge.sh --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
 [diff]
 	tool = vimdiff
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
