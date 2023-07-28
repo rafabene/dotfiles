@@ -31,7 +31,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws bgnotify brew bundler cp command-not-found colored-man-pages colorize dirhistory docker docker-compose gem git git-extras gnu-utils golang helm history history-substring-search kubectl man mvn minikube nmap node npm nvm postgres rake rvm sdk ssh-agent sudo spring tmux tmuxinator vscode)
+plugins=(bgnotify colored-man-pages docker-compose mvn node npm nvm sdk)
 
 #Configure oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -45,19 +45,15 @@ bindkey ' ' magic-space
 bindkey '^[[1;5C' forward-word                        # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5D' backward-word                       # [Ctrl-LeftArrow] - move backward one word
 
-export DEFAULT_USER=rafaelbenevides
-export GRAALVM_HOME=/Users/rafael/java/graalvm-ce-java11-20.1.0/Contents/Home
-
-#Export PATH variable
-export PATH=:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export DEFAULT_USER=rafael
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/rafael/.sdkman"
-[[ -s "/Users/rafael/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rafael/.sdkman/bin/sdkman-init.sh"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#Quarkus completion
+source <(quarkus completion zsh)

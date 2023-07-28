@@ -1,4 +1,0 @@
----
-  - name: Installing TPM (tmux plugin manager)
-    git: repo=https://github.com/tmux-plugins/tpm dest={{ lookup('env','HOME') }}/.tmux/plugins/tpm
-
