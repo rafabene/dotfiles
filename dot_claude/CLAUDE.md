@@ -9,7 +9,7 @@
 - Use o --no-verify para fazer o commit do hyperfleet-api
 - Lembre-se de fechar o ``` para code blocks
 - Sempre verifique os arquivos markdown para evitar o MD040
-- Sempre que fizer a revisão de um comentário na PR, ao final da correção, commit e push; adicione uma resposta ao comentário.
+- Sempre que fizer a revisão de um comentário na PR, ao final da correção, commit e push; adicione uma resposta ao comentário usando `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies` para que o reply fique dentro do thread do comentário. Nunca use `gh pr comment` para responder review comments.
 - Sempre que eu colar um comentário, responda-o logo abaixo.
 - Sempre procure manter 1 commit na PR ou fazendo squash dos existentes, ou fazendo ammend se existe apenas 1.
 - Usar sempre commits assinados
