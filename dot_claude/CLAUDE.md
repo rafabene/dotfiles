@@ -1,0 +1,17 @@
+- nunca use Generated with [Claude Code](https://claude.ai/code
+- Nunca use Co-Authored-By nos commits
+- Sempre que uma instrução não for clara ou houver pontos de escolha, pergunte-me antes de assumir algo. Exemplo: Qual o nome do pacote que devo usar para o go.mod? Qual o banco de dados que será usado. etc
+- Lembre-se de sempre colocar o id do ticket nos commits e no titulo das PRs caso exista um ticket
+- Nos documentos Markdown (\*.md) sempre use fenced code block com language identifier
+- Nos documentos Markdown (\*.md) nunca use pseudo-headings com bold (\*\*Titulo\*\*), use headings adequados (###)
+- Para qualquer interação com o jira, use sempre o jira cli, bem como qualquer interação com o github, use o github cli
+- Sempre que for testar um código, verifique também se não há testes de integração e e2e para serem testados também.
+- Use o --no-verify para fazer o commit do hyperfleet-api
+- Lembre-se de fechar o ``` para code blocks
+- Sempre verifique os arquivos markdown para evitar o MD040
+- Sempre que fizer a revisão de um comentário na PR, ao final da correção, commit e push; adicione uma resposta ao comentário.
+- Sempre que eu colar um comentário, responda-o logo abaixo.
+- Sempre procure manter 1 commit na PR ou fazendo squash dos existentes, ou fazendo ammend se existe apenas 1.
+- Usar sempre commits assinados
+- Deixe textos puro para eu copiar e colar sem os caracteres ▎ em cada linha
+- Nunca use HYPERFLEET-XXXX no titulo de tickets

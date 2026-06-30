@@ -1,0 +1,19 @@
+KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+
+Host *
+  StrictHostKeyChecking no
+
+Host tfs.df.gov.br
+  User git
+  PubkeyAcceptedKeyTypes +ssh-rsa
+  HostkeyAlgorithms +ssh-rsa
+
+Host gitlab.com
+  User git
+  PubkeyAcceptedKeyTypes ssh-rsa
+  HostkeyAlgorithms +ssh-rsa
+
+Host gitlab.sejus.df.gov.br
+  User git
+  PubkeyAcceptedKeyTypes ssh-rsa,ssh-ed25519
+  HostkeyAlgorithms +ssh-rsa

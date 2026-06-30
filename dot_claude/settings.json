@@ -1,0 +1,31 @@
+{
+  "model": "claude-opus-4-6[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "ccstatusline",
+    "padding": 0,
+    "refreshInterval": 10
+  },
+  "enabledPlugins": {
+    "hyperfleet-architecture@hyperfleet-claude-plugins": true,
+    "hyperfleet-code-review@hyperfleet-claude-plugins": true,
+    "hyperfleet-devtools@hyperfleet-claude-plugins": true,
+    "hyperfleet-hooks@hyperfleet-claude-plugins": true,
+    "hyperfleet-jira@hyperfleet-claude-plugins": true,
+    "hyperfleet-operational-readiness@hyperfleet-claude-plugins": true,
+    "hyperfleet-release@hyperfleet-claude-plugins": true,
+    "hyperfleet-standards@hyperfleet-claude-plugins": true,
+    "hyperfleet-work-triage@hyperfleet-claude-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "hyperfleet-claude-plugins": {
+      "source": {
+        "source": "git",
+        "url": "git@github.com:openshift-hyperfleet/hyperfleet-claude-plugins.git"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "tui": "default",
+  "skipDangerousModePermissionPrompt": true
+}
