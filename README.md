@@ -22,7 +22,7 @@ Dotfiles gerenciados com [chezmoi](https://www.chezmoi.io/) e encriptados com [a
 
 ### Ferramentas de Desenvolvimento
 
-- `~/.config/.jira/.config.yml` — Jira CLI config
+- `~/.config/.jira/config.yml` — Jira CLI config
 - `~/.config/gh/config.yml` — GitHub CLI config
 - `~/.config/cmux/cmux.json` — cmux config
 
@@ -95,4 +95,14 @@ chezmoi update
 
 ```bash
 chezmoi diff
+```
+
+### Salvar mudanças no repositório remoto
+
+O chezmoi não faz commit nem push automaticamente. Após editar e aplicar, salve as mudanças manualmente:
+
+```bash
+chezmoi git -- add .
+chezmoi git -- commit -m "Descrição da mudança"
+chezmoi git -- push
 ```
