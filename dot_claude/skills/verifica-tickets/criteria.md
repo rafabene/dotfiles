@@ -5,7 +5,6 @@ Para cada ticket, verificar os seguintes critérios:
 | Critério | Como verificar |
 |----------|----------------|
 | **Duplicado?** | Buscar tickets com summary similar |
-| **Epic linkado** | Campo `parent.key` não é null, ou ticket é Bug, ou tem label `no-epic-needed`. Ver regras detalhadas em [epics.md](epics.md) — só sugerir epic quando o ticket contribui diretamente para o acceptance criteria do epic (mesma lógica do `/atribui-epics`) |
 | **Prioridade definida** | Campo `priority` não é "Undefined". Se for "Undefined", sugira uma prioridade baseada no tipo e contexto do ticket (Bug crítico: Blocker/Critical, Bug normal: Major, Story de infra: Normal, Task de investigação: Normal, etc.) |
 | **Urgente/Blocker?** | Priority = "Blocker" ou tem links do tipo "Blocks" |
 | **What/Why/AC** | Description contém seções "What", "Why" e "Acceptance Criteria" |

@@ -57,7 +57,6 @@ jira issue view <TICKET> --raw | jq '{
   priority: .fields.priority.name,
   status: .fields.status.name,
   assignee: (.fields.assignee.displayName // "Unassigned"),
-  epic: (.fields.customfield_10014 // .fields.parent.key // null),
   storyPoints: (.fields.customfield_10028 // null),
   fixVersion: (.fields.fixVersions[0].name // null),
   components: [.fields.components[]?.name],
@@ -73,7 +72,7 @@ Para cada ticket, buscar possíveis duplicados baseado em palavras-chave do summ
 
 ### 4. Analisar cada ticket
 
-Para cada ticket, aplique os critérios de análise definidos em [criteria.md](criteria.md). Para a verificação de Epic, siga as regras em [epics.md](epics.md) — que usa a mesma lógica do `/atribui-epics` (match por acceptance criteria, não por tema).
+Para cada ticket, aplique os critérios de análise definidos em [criteria.md](criteria.md). Não verifique epic — isso será feito pelo `/atribui-epics`.
 
 ### 5. Formato de saída
 

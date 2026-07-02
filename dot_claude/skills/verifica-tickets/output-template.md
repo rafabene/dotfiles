@@ -19,7 +19,6 @@ Para cada ticket, mostrar:
 | **Descrição** | ok/alerta/erro | Tamanho e red flags ("TBD", "maybe") |
 | **What/Why/AC** | ok/alerta/erro | O que está faltando |
 | **Duplicado?** | ok/alerta/erro | Detalhes |
-| **Epic linkado** | ok/erro | HYPERFLEET-XXX ou - |
 | **Prioridade** | ok/erro | Normal/Critical/Blocker (se erro, sugerir valor) |
 | **Urgente/Blocker?** | ok/erro | Detalhes |
 | **Story Points** | ok/alerta/erro | Valor, sugestão via estimator, ou alerta Fibonacci |
@@ -52,7 +51,7 @@ Ao final, mostrar tabela resumo:
 Listar tickets que precisam de atenção:
 - Bugs ou Critical/Blocker sem assignee
 - Possíveis duplicados
-- Sem Epic ou Fix Version para tickets Critical+ (exceto Bugs, que não precisam de Epic)
+- Sem Fix Version para tickets Critical+
 - Tickets sem Activity Type (impacta capacity planning)
 - Tickets sem Component
 - Blocker/Critical sem sprint atribuído
