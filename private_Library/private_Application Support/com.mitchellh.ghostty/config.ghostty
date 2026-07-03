@@ -1,0 +1,18 @@
+font-family = SF Mono
+font-size = 17
+theme = One Dark
+scrollback-limit = 50000000
+split-divider-color = #3e4451
+working-directory = /Users/rafael/projetos/OCM-new
+
+# Escolha um tema vibrante nativo do Ghostty (ex: Catppuccin Mocha, Tokyo Night, Snazzy, ou Monokai Pro)
+theme = Abernathy
+
+# Ajusta o ganho/brilho das cores de 256 cores e ANSI para que fiquem mais intensas
+# Um valor ligeiramente acima de 1.0 (ex: 1.1 ou 1.2) torna as cores mais "vivas"
+palette-gain = 1.1
+
+# Garante que o suporte a True Color (24-bit) está totalmente ativo
+command-color-space = srgb
+
+# minimum-contrast = 4.5
