@@ -1,5 +1,5 @@
 {
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-4-6[1m]",
   "statusLine": {
     "type": "command",
     "command": "ccstatusline",
