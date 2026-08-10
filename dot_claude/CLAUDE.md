@@ -12,6 +12,6 @@
 - Sempre que fizer a revisão de um comentário na PR, ao final da correção, commit e push; adicione uma resposta ao comentário usando `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies` para que o reply fique dentro do thread do comentário. Nunca use `gh pr comment` para responder review comments.
 - Sempre que eu colar um comentário, responda-o logo abaixo.
 - Sempre procure manter 1 commit na PR ou fazendo squash dos existentes, ou fazendo ammend se existe apenas 1.
-- Usar sempre commits assinados
+- Use sempre commits assinados
 - Deixe textos puro para eu copiar e colar sem os caracteres ▎ em cada linha
 - Nunca use HYPERFLEET-XXXX no titulo de tickets

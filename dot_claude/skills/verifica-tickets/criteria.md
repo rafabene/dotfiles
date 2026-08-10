@@ -19,18 +19,43 @@ Para cada ticket, verificar os seguintes critérios:
 
 ## Regras de sugestão de Component
 
-Se estiver vazio, sugerir baseado no summary, descrição e Epic. Componentes válidos: `API`, `Adapter`, `Sentinel`, `Architecture`.
+Se estiver vazio, sugerir baseado no summary, descrição e Epic. Componentes válidos (fonte: `hyperfleet/standards/ticket-hygiene.md` no repo de arquitetura):
+
+| Component | Escopo |
+|-----------|--------|
+| `Adapter` | Adapter framework, task configs, resource lifecycle |
+| `API` | REST API service, handlers, DAOs, middleware |
+| `Architecture` | Architecture docs, standards, ADRs, working agreements |
+| `CICD` | Prow jobs, Konflux pipelines, release automation |
+| `Claude Plugins` | Claude Code plugins, skills, AI-assisted tooling |
+| `E2E Tests` | End-to-end test suites and test infrastructure |
+| `Documentation` | Developer guides, authoring guides, reference docs, pattern docs |
+| `Infra` | Operator, Helm umbrella charts, deployment scripts |
+| `Message Broker` | Shared broker library (Pub/Sub, RabbitMQ, CloudEvents) |
+| `OCI` | OCI artifact distribution, Helm chart publishing |
+| `Sentinel` | Sentinel reconciliation service, decision engine |
+
+> **Nota:** O repo de arquitetura usa o nome "Infrastructure" mas no JIRA o componente se chama "Infra".
 
 Regras de sugestão:
-- summary/descrição menciona API, search, query, database, config, presenter: `API`
-- menciona adapter, task-config, reconcil: `Adapter`
-- menciona sentinel, watcher, message, event, broker: `Sentinel`
-- menciona architecture, docs, design, CLAUDE.md, standards: `Architecture`
+- summary/descrição menciona API, search, query, database, config, presenter, middleware, handler: `API`
+- menciona adapter, task-config, transport, DSL, CEL, resource lifecycle: `Adapter`
+- menciona sentinel, watcher, decision, evaluation, reconciliation engine: `Sentinel`
+- menciona architecture, ADR, design, standards, working agreement: `Architecture`
+- menciona operator, applier, helm, deployment, install, CRD, OLM: `Infra`
+- menciona prow, konflux, pipeline, CI, release automation: `CICD`
+- menciona e2e, end-to-end, test suite, test infrastructure: `E2E Tests`
+- menciona claude, plugin, skill, AI tooling: `Claude Plugins`
+- menciona guide, authoring guide, developer guide, reference doc, pattern doc: `Documentation`
+- menciona broker, pub/sub, rabbitmq, cloudevents, message: `Message Broker`
+- menciona OCI, artifact, chart publishing: `OCI`
 
 Por Epic:
 - HYPERFLEET-165: `API`
 - HYPERFLEET-404: `Sentinel`
 - HYPERFLEET-406: `Adapter`
+- HYPERFLEET-1403: `Infra`
+- HYPERFLEET-1418: `Infra`
 
 Se ambíguo, sugerir baseado no contexto geral.
 

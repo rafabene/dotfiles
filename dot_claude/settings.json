@@ -25,7 +25,6 @@
       }
     }
   },
-  "effortLevel": "high",
   "tui": "default",
   "skipDangerousModePermissionPrompt": true
 }

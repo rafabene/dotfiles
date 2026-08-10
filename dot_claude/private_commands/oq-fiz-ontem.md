@@ -110,7 +110,8 @@ jira issue view TICKET-KEY --raw 2>/dev/null | python3 -c "import sys,json; d=js
 
 - Se a data de resolução começa com o dia de referência (ex: `2026-06-01T...`) → use "Completed"
 - Se a data de resolução é **anterior** ao dia de referência → **exclua o ticket** do standup (não houve trabalho real nesse dia, apenas um update automático)
-- Se o ticket não está Closed/Done (está In Progress, etc.) → use "Worked on" normalmente, sem verificação adicional
+- Se o ticket está In Progress ou In Review → use "Worked on" normalmente, sem verificação adicional
+- Se o ticket está em qualquer outro status (Backlog, New, etc.) → **exclua o ticket** do standup (a atualização foi provavelmente automática ou administrativa, não trabalho real)
 
 ### 4. Buscar PRs revisadas no HyperFleet
 
@@ -214,7 +215,7 @@ No
 - **Texto puro**: Sem markdown (`**`, `-`, `#`, etc.). Cada item numa linha separada sem bullet points
 - **Meetings (yesterday)**: Mostrar `X meetings` como placeholder para preenchimento manual. Sempre a primeira linha do "yesterday"
 - Use "Completed" para tickets com status Closed/Done
-- Use "Worked on" para tickets com status In Progress ou outros
+- Use "Worked on" apenas para tickets com status In Progress ou In Review. Tickets em outros status (Backlog, New, etc.) devem ser excluídos do "yesterday"
 - **Excluir Epics**: Nunca inclua tickets do tipo Epic no standup (nem em "yesterday" nem em "today"). Epics são containers de trabalho, não trabalho direto
 - Agrupe commits e tickets por TICKET-ID. Se um commit referencia um ticket que também aparece no Jira, combine numa única linha
 - Para PR Reviews, liste todas numa única linha com os repos e números entre parênteses
