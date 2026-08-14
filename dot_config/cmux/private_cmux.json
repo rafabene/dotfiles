@@ -2,26 +2,26 @@
   "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
   "schemaVersion": 1,
   "actions": {
-    "claude-workspace": {
+    "omp-workspace": {
       "type": "workspaceCommand",
-      "title": "Claude Workspace",
-      "commandName": "Claude Dev",
+      "title": "OMP Workspace",
+      "commandName": "OMP Dev",
       "shortcut": "cmd+j",
       "palette": true
     }
   },
   "commands": [
     {
-      "name": "Claude Dev",
+      "name": "OMP Dev",
       "workspace": {
-        "name": "Claude",
+        "name": "OMP",
         "layout": {
           "pane": {
             "surfaces": [
               {
                 "type": "terminal",
-                "name": "Claude",
-                "command": "claude",
+                "name": "OMP",
+                "command": "omp",
                 "focus": true
               }
             ]

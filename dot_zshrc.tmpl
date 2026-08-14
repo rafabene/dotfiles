@@ -49,3 +49,15 @@ fi
 
 # ── Powerlevel10k config ─────────────────────────────────────────────
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ── Red Hat Claude Vertex AI ─────────────────────────────────────────
+[ -f "/Users/rafael/.config/claude-code-vertex/env.sh" ] && . "/Users/rafael/.config/claude-code-vertex/env.sh"
+
+# Vertex AI
+# Claude Code reads these:
+export CLAUDE_CODE_USE_VERTEX=1
+export ANTHROPIC_VERTEX_PROJECT_ID=itpc-ca-fb292a90af
+export CLOUD_ML_REGION=global
+# OMP (google-vertex provider) reads these:
+export GOOGLE_CLOUD_PROJECT=itpc-ca-fb292a90af
+export GOOGLE_CLOUD_LOCATION=global
