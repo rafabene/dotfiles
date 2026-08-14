@@ -42,6 +42,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # ── Secrets (encrypted by chezmoi) ───────────────────────────────────
 [ -f ~/.secrets.env ] && source ~/.secrets.env
 
+# ── OMP (Oh My Pi) ───────────────────────────────────
+if command -v omp &> /dev/null; then
+    eval "$(omp completions zsh)"
+fi
+
 # ── Powerlevel10k config ─────────────────────────────────────────────
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f "/Users/rafael/.config/claude-code-vertex/env.sh" ] && . "/Users/rafael/.config/claude-code-vertex/env.sh"
