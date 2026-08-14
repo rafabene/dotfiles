@@ -1,0 +1,40 @@
+modelRoles: 
+  default: google-vertex/claude-sonnet-5@default
+  smol: google-vertex/claude-haiku-4-5@20251001
+  slow: google-vertex/claude-opus-4-8@default
+  plan: google-vertex/claude-sonnet-5@default
+  tiny: google-vertex/claude-haiku-4-5@20251001
+  commit: google-vertex/claude-haiku-4-5@20251001
+prewalk: 
+  enabled: true
+defaultThinkingLevel: auto
+display: 
+  showTokenUsage: true
+providers: 
+  autoThinkingMaxEffort: xhigh
+  webSearchOrder: 
+    []
+textVerbosity: low
+read: 
+  defaultLimit: 200
+  summarize: 
+    prose: true
+tools: 
+  artifactSpillThreshold: 30
+  artifactTailLines: 300
+  artifactHeadBytes: 10
+  artifactTailBytes: 10
+compaction: 
+  keepRecentTokens: 15000
+advisor: 
+  enabled: false
+autolearn: 
+  enabled: false
+retry: 
+  modelFallback: true
+  fallbackRevertPolicy: cooldown-expiry
+  fallbackChains: 
+    default: 
+      - google-vertex/claude-sonnet-5@default
+      - google-vertex/claude-haiku-4-5@20251001
+setupVersion: 1
