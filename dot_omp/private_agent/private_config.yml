@@ -1,43 +1,46 @@
-modelRoles:
+modelRoles: 
   default: google-vertex/claude-sonnet-5@default
   smol: google-vertex/claude-haiku-4-5@20251001
   slow: google-vertex/claude-opus-5@default
   plan: google-vertex/claude-sonnet-5@default
   tiny: google-vertex/claude-haiku-4-5@20251001
   commit: google-vertex/claude-haiku-4-5@20251001
-prewalk:
+prewalk: 
   enabled: true
 defaultThinkingLevel: auto
 display: 
   showTokenUsage: true
-providers:
-  autoThinkingMaxEffort: xhigh
-textVerbosity: low
 read: 
   defaultLimit: 200
   summarize: 
     prose: true
-tools:
+tools: 
   format: anthropic
   artifactSpillThreshold: 30
   artifactTailLines: 300
   artifactHeadBytes: 10
   artifactTailBytes: 10
+  approvalMode: yolo
 compaction: 
   keepRecentTokens: 15000
 advisor: 
   enabled: false
 autolearn: 
   enabled: false
+  autoContinue: false
 retry: 
-  modelFallback: true
-  fallbackRevertPolicy: cooldown-expiry
-  fallbackChains:
-    slow:
+  fallbackChains: 
+    slow: 
       - google-vertex/claude-opus-5@default
       - google-vertex/claude-opus-4-8@default
       - google-vertex/claude-sonnet-5@default
-    default:
+    default: 
       - google-vertex/claude-sonnet-5@default
       - google-vertex/claude-haiku-4-5@20251001
 setupVersion: 1
+theme: 
+  dark: titanium
+hideThinkingBlock: true
+memory: 
+  backend: local
+symbolPreset: nerd

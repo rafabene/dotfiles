@@ -58,7 +58,6 @@ jira issue view <TICKET> --raw | jq '{
   status: .fields.status.name,
   assignee: (.fields.assignee.displayName // "Unassigned"),
   storyPoints: (.fields.customfield_10028 // null),
-  fixVersion: (.fields.fixVersions[0].name // null),
   components: [.fields.components[]?.name],
   activityType: (.fields.customfield_10464.value // "Uncategorized"),
   sprint: (.fields.customfield_10020 | if . and length > 0 then .[-1].name else null end),

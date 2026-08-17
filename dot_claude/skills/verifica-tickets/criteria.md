@@ -9,7 +9,6 @@ Para cada ticket, verificar os seguintes critérios:
 | **Urgente/Blocker?** | Priority = "Blocker" ou tem links do tipo "Blocks" |
 | **What/Why/AC** | Description contém seções "What", "Why" e "Acceptance Criteria" |
 | **Story Points** | Campo `customfield_10028` não é null. Se for null, use a skill `hyperfleet-jira:jira-story-pointer` para estimar e sugerir um valor. Se o valor existir, verifique se está na sequência Fibonacci válida (0, 1, 3, 5, 8, 13). Se for 13, alerte que o ticket deve ser quebrado em tickets menores. Se não for Fibonacci (ex: 2, 4, 6, 7), sugira o valor Fibonacci mais próximo |
-| **Fix Version** | Campo `fixVersions` não está vazio |
 | **Assignee** | Só flaggar como erro se o ticket for Bug ou prioridade Blocker/Critical. Para os demais tipos e prioridades, Unassigned é estado normal (backlog) — marcar como ok |
 | **Título** | Claro, actionable, menos de 100 caracteres. Alertar se for vago (ex: "Fix bug", "Update feature") |
 | **Descrição** | Mais de 100 caracteres. Alertar se contiver linguagem ambígua ("TBD", "maybe", "probably", "possibly") |

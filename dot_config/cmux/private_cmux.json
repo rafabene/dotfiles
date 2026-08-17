@@ -4,24 +4,24 @@
   "actions": {
     "omp-workspace": {
       "type": "workspaceCommand",
-      "title": "OMP Workspace",
-      "commandName": "OMP Dev",
+      "title": "Claude Workspace",
+      "commandName": "IA",
       "shortcut": "cmd+j",
       "palette": true
     }
   },
   "commands": [
     {
-      "name": "OMP Dev",
+      "name": "IA",
       "workspace": {
-        "name": "OMP",
+        "name": "Claude",
         "layout": {
           "pane": {
             "surfaces": [
               {
                 "type": "terminal",
-                "name": "OMP",
-                "command": "omp",
+                "name": "Claude",
+                "command": "claude",
                 "focus": true
               }
             ]

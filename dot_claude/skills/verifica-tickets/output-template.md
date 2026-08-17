@@ -22,7 +22,6 @@ Para cada ticket, mostrar:
 | **Prioridade** | ok/erro | Normal/Critical/Blocker (se erro, sugerir valor) |
 | **Urgente/Blocker?** | ok/erro | Detalhes |
 | **Story Points** | ok/alerta/erro | Valor, sugestão via estimator, ou alerta Fibonacci |
-| **Fix Version** | ok/erro | Versão ou - |
 | **Assignee** | ok/erro | Nome ou Unassigned |
 | **Component** | ok/erro | Nome ou - |
 | **Activity Type** | ok/erro | Tipo ou Uncategorized |
@@ -51,7 +50,6 @@ Ao final, mostrar tabela resumo:
 Listar tickets que precisam de atenção:
 - Bugs ou Critical/Blocker sem assignee
 - Possíveis duplicados
-- Sem Fix Version para tickets Critical+
 - Tickets sem Activity Type (impacta capacity planning)
 - Tickets sem Component
 - Blocker/Critical sem sprint atribuído

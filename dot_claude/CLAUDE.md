@@ -6,7 +6,6 @@
 - Nos documentos Markdown (\*.md) nunca use pseudo-headings com bold (\*\*Titulo\*\*), use headings adequados (###)
 - Para qualquer interação com o jira, use sempre o jira cli, bem como qualquer interação com o github, use o github cli
 - Sempre que for testar um código, verifique também se não há testes de integração e e2e para serem testados também.
-- Use o --no-verify para fazer o commit do hyperfleet-api
 - Lembre-se de fechar o ``` para code blocks
 - Sempre verifique os arquivos markdown para evitar o MD040
 - Sempre que fizer a revisão de um comentário na PR, ao final da correção, commit e push; adicione uma resposta ao comentário usando `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies` para que o reply fique dentro do thread do comentário. Nunca use `gh pr comment` para responder review comments.
