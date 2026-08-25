@@ -40,6 +40,7 @@
       "name": "NewDay",
       "workspace": {
         "name": "New Day",
+        "cwd": "~/projetos/OCM-new",
         "layout": {
           "direction": "horizontal",
           "split": 0.25,
