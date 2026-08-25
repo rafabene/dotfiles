@@ -2,11 +2,18 @@
   "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
   "schemaVersion": 1,
   "actions": {
-    "omp-workspace": {
+    "ia-workspace": {
       "type": "workspaceCommand",
       "title": "Claude Workspace",
       "commandName": "IA",
       "shortcut": "cmd+j",
+      "palette": true
+    },
+    "newday-workspace": {
+      "type": "workspaceCommand",
+      "title": "New Day Workspace",
+      "commandName": "NewDay",
+      "shortcut": "cmd+d",
       "palette": true
     }
   },
@@ -26,6 +33,75 @@
               }
             ]
           }
+        }
+      }
+    },
+    {
+      "name": "NewDay",
+      "workspace": {
+        "name": "New Day",
+        "layout": {
+          "direction": "horizontal",
+          "split": 0.25,
+          "children": [
+            {
+              "pane": {
+                "surfaces": [
+                  {
+                    "type": "terminal",
+                    "name": "Oq Fiz hoje",
+                    "command": "claude /oq-fiz-ontem",
+                    "focus": true
+                  }
+                ]
+              }
+            },
+            {
+              "direction": "horizontal",
+              "split": 0.3333,
+              "children": [
+                {
+                  "pane": {
+                    "surfaces": [
+                      {
+                        "type": "terminal",
+                        "name": "Sprint Status",
+                        "command": "claude /hyperfleet-jira:sprint-status"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "direction": "horizontal",
+                  "split": 0.5,
+                  "children": [
+                    {
+                      "pane": {
+                        "surfaces": [
+                          {
+                            "type": "terminal",
+                            "name": "Renovate PRs",
+                            "command": "claude /hyperfleet-devtools:renovate-prs"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "pane": {
+                        "surfaces": [
+                          {
+                            "type": "terminal",
+                            "name": "Verifica Tickets",
+                            "command": "claude /verifica-tickets"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       }
     }
