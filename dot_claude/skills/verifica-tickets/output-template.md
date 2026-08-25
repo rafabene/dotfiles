@@ -26,6 +26,7 @@ Para cada ticket, mostrar:
 | **Component** | ok/erro | Nome ou - |
 | **Activity Type** | ok/erro | Tipo ou Uncategorized |
 | **Sprint** | ok/alerta/erro | Nome do sprint ou sugestão baseada na prioridade |
+| **Links** | ok/alerta/erro | Lista de links (chave + direção), inconsistências de direção ou links ausentes |
 
 **Recomendação:**
 [Lista de ações necessárias ou "Pronto para desenvolvimento"]
@@ -53,6 +54,9 @@ Listar tickets que precisam de atenção:
 - Tickets sem Activity Type (impacta capacity planning)
 - Tickets sem Component
 - Blocker/Critical sem sprint atribuído
+- Links com direção incorreta (blocks/is blocked by trocados)
+- Dependências mencionadas na descrição sem link correspondente
+- Links "is blocked by" apontando para ticket já Closed/Resolved/Done (possível link obsoleto)
 
 ## Correções automáticas
 

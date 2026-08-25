@@ -61,13 +61,24 @@ jira issue view <TICKET> --raw | jq '{
   components: [.fields.components[]?.name],
   activityType: (.fields.customfield_10464.value // "Uncategorized"),
   sprint: (.fields.customfield_10020 | if . and length > 0 then .[-1].name else null end),
-  links: [.fields.issuelinks[]? | {type: .type.name, key: (.inwardIssue.key // .outwardIssue.key)}]
+  links: [.fields.issuelinks[]? | {
+    direction: (if .outwardIssue then .type.outward else .type.inward end),
+    key: (.outwardIssue.key // .inwardIssue.key),
+    linkedSummary: (.outwardIssue.fields.summary // .inwardIssue.fields.summary),
+    linkedStatus: (.outwardIssue.fields.status.name // .inwardIssue.fields.status.name)
+  }]
 }'
 ```
+
+Note que `direction` já vem com o rótulo correto ("blocks" ou "is blocked by"), não apenas o nome genérico do tipo de link — isso é necessário para o passo 3.5.
 
 ### 3. Verificar duplicados
 
 Para cada ticket, buscar possíveis duplicados baseado em palavras-chave do summary.
+
+### 3.5. Verificar links e direção
+
+Para cada ticket com links (`issuelinks`), aplique o critério **Links** definido em [criteria.md](criteria.md). Quando a direção precisar ser confirmada contra o conteúdo do ticket linkado (não apenas o summary), busque os detalhes completos do ticket linkado com o mesmo comando do passo 2.
 
 ### 4. Analisar cada ticket
 

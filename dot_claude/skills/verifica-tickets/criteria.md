@@ -15,6 +15,20 @@ Para cada ticket, verificar os seguintes critérios:
 | **Component** | Campo `components` não está vazio. Ver regras de sugestão abaixo |
 | **Activity Type** | Campo `customfield_10464` não é "Uncategorized". Ver regras de sugestão abaixo |
 | **Sprint** | Campo `sprint` não é null. Se for null, sugerir baseado na prioridade e tipo: Blocker/Critical: recomendar adicionar ao sprint atual imediatamente; Major: recomendar adicionar ao próximo sprint; Normal/Minor: apenas sinalizar como sem sprint |
+| **Links** | Ver regras de verificação abaixo |
+
+## Regras de verificação de Links
+
+Cada item em `issuelinks` tem uma `direction` (rótulo do tipo de link, ex: "blocks", "is blocked by", "relates to", "duplicates", "clones") e o ticket do outro lado (`key`, `linkedSummary`, `linkedStatus`).
+
+1. **Existência**: se a descrição, "Technical Notes" ou "Why" do ticket menciona explicitamente depender de, ser bloqueado por, ou bloquear outro ticket (cita a chave HYPERFLEET-XXX), mas não há um link correspondente em `issuelinks`, sinalizar como **alerta** — link ausente, sugerir adicionar.
+2. **Direção correta**: para cada link do tipo blocks/is blocked by, verificar se a direção semântica bate com o conteúdo:
+   - Se a `direction` é `"blocks"` (este ticket bloqueia o outro): o outro ticket deveria depender deste — ex. o outro ticket for prover, implementar ou usar algo que este ticket entrega/corrige primeiro.
+   - Se a `direction` é `"is blocked by"` (este ticket é bloqueado pelo outro): este ticket deveria depender do outro — ex. a descrição/Technical Notes deste ticket menciona que precisa que o outro esteja pronto, mergeado ou implementado antes.
+   - Se o texto do ticket sugere o oposto da direção registrada (ex: a descrição diz "depende de X" mas o link registrado é "blocks X" em vez de "is blocked by X"), sinalizar como **erro** e sugerir a correção exata (qual comando/direção deveria ser usado).
+   - Quando o summary do ticket linkado (`linkedSummary`) não for suficiente para confirmar a direção, buscar a descrição completa do ticket linkado (`jira issue view <KEY> --raw`) antes de concluir.
+3. **Status inconsistente**: se a `direction` é `"is blocked by"` e o `linkedStatus` do bloqueador já é Closed/Resolved/Done, sinalizar como **alerta** — o link pode estar obsoleto (bloqueio já resolvido) e deveria ser removido ou o ticket pode já estar liberado para andar.
+4. Links do tipo `relates to`, `duplicates`, `clones` não precisam de verificação de direção (são simétricos ou já cobertos pelo critério de Duplicado), apenas confirmar que fazem sentido com o conteúdo.
 
 ## Regras de sugestão de Component
 
