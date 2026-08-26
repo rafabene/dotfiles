@@ -42,67 +42,31 @@
         "name": "New Day",
         "cwd": "~/projetos/OCM-new",
         "layout": {
-          "direction": "horizontal",
-          "split": 0.25,
-          "children": [
-            {
-              "pane": {
-                "surfaces": [
-                  {
-                    "type": "terminal",
-                    "name": "Oq Fiz hoje",
-                    "command": "claude /oq-fiz-ontem",
-                    "focus": true
-                  }
-                ]
+          "pane": {
+            "surfaces": [
+              {
+                "type": "terminal",
+                "name": "Oq Fiz hoje",
+                "command": "claude /oq-fiz-ontem",
+                "focus": true
+              },
+              {
+                "type": "terminal",
+                "name": "Sprint Status",
+                "command": "claude /hyperfleet-jira:sprint-status"
+              },
+              {
+                "type": "terminal",
+                "name": "Renovate PRs",
+                "command": "claude /hyperfleet-devtools:renovate-prs"
+              },
+              {
+                "type": "terminal",
+                "name": "Verifica Tickets",
+                "command": "claude /verifica-tickets"
               }
-            },
-            {
-              "direction": "horizontal",
-              "split": 0.3333,
-              "children": [
-                {
-                  "pane": {
-                    "surfaces": [
-                      {
-                        "type": "terminal",
-                        "name": "Sprint Status",
-                        "command": "claude /hyperfleet-jira:sprint-status"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "direction": "horizontal",
-                  "split": 0.5,
-                  "children": [
-                    {
-                      "pane": {
-                        "surfaces": [
-                          {
-                            "type": "terminal",
-                            "name": "Renovate PRs",
-                            "command": "claude /hyperfleet-devtools:renovate-prs"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "pane": {
-                        "surfaces": [
-                          {
-                            "type": "terminal",
-                            "name": "Verifica Tickets",
-                            "command": "claude /verifica-tickets"
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+            ]
+          }
         }
       }
     }
