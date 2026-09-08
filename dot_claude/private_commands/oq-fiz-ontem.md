@@ -98,7 +98,7 @@ jira issue list --reporter="$(jira me)" --created "YYYY-MM-DD" --plain --columns
 
 Substitua `YYYY-MM-DD` pela data de referência calculada.
 
-Combine os resultados removendo duplicatas (mesmo KEY). **Exclua tickets do tipo Epic** — eles não representam trabalho direto feito no dia. Se ambos os comandos falharem ou não retornarem resultados, informe que não houve atividade no Jira.
+Combine os resultados removendo duplicatas (mesmo KEY). **Exclua tickets do tipo Epic e Feature** — eles não representam trabalho direto feito no dia. Se ambos os comandos falharem ou não retornarem resultados, informe que não houve atividade no Jira.
 
 #### 3b. Verificar data de resolução para tickets Closed/Done
 
@@ -172,7 +172,7 @@ jira issue list --assignee="$(jira me)" --status "Backlog" --plain --columns "KE
 jira issue list --assignee="$(jira me)" --status "New" --plain --columns "KEY,SUMMARY,TYPE" --no-headers
 ```
 
-Combine os resultados removendo duplicatas. **Exclua tickets do tipo Epic** — eles não representam trabalho direto do dia. Priorize na seguinte ordem: In Progress primeiro, depois Backlog, depois New.
+Combine os resultados removendo duplicatas. **Exclua tickets do tipo Epic e Feature** — eles não representam trabalho direto do dia. Priorize na seguinte ordem: In Progress primeiro, depois Backlog, depois New.
 
 #### 5d. Minhas PRs abertas no HyperFleet
 
@@ -216,7 +216,7 @@ No
 - **Meetings (yesterday)**: Mostrar `X meetings` como placeholder para preenchimento manual. Sempre a primeira linha do "yesterday"
 - Use "Completed" para tickets com status Closed/Done
 - Use "Worked on" apenas para tickets com status In Progress ou In Review. Tickets em outros status (Backlog, New, etc.) devem ser excluídos do "yesterday"
-- **Excluir Epics**: Nunca inclua tickets do tipo Epic no standup (nem em "yesterday" nem em "today"). Epics são containers de trabalho, não trabalho direto
+- **Excluir Epics e Features**: Nunca inclua tickets do tipo Epic ou Feature no standup (nem em "yesterday" nem em "today"). São containers de trabalho, não trabalho direto
 - Agrupe commits e tickets por TICKET-ID. Se um commit referencia um ticket que também aparece no Jira, combine numa única linha
 - Para PR Reviews, liste todas numa única linha com os repos e números entre parênteses
 - Se não houver PRs revisadas no "yesterday", omita a linha de PR Reviews no "yesterday"

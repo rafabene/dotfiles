@@ -32,30 +32,41 @@ Cada item em `issuelinks` tem uma `direction` (rótulo do tipo de link, ex: "blo
 
 ## Regras de sugestão de Component
 
-Se estiver vazio, sugerir baseado no summary, descrição e Epic. Componentes válidos (fonte: `hyperfleet/standards/ticket-hygiene.md` no repo de arquitetura):
+Se estiver vazio, sugerir baseado no summary, descrição e Epic. Componentes válidos (fonte: `hyperfleet/standards/ticket-hygiene.md` no repo de arquitetura). Existem dois tipos: **domínio** (qual sistema) e **transversal** (qual tipo de trabalho, independente do sistema).
+
+Componentes de domínio:
 
 | Component | Escopo |
 |-----------|--------|
 | `Adapter` | Adapter framework, task configs, resource lifecycle |
 | `API` | REST API service, handlers, DAOs, middleware |
+| `Applier` | Desire store backends, applier controllers, remote applier connectivity |
+| `Infra` | Helm umbrella charts, deployment scripts |
+| `Message Broker` | Shared broker library (Pub/Sub, RabbitMQ, CloudEvents) |
+| `Operator` | Bundle controller, HyperFleetConfig CRD, OLM packaging, operator lifecycle |
+| `Sentinel` | Sentinel reconciliation service, decision engine |
+
+Componentes transversais:
+
+| Component | Escopo |
+|-----------|--------|
 | `Architecture` | Architecture docs, standards, ADRs, working agreements |
 | `CICD` | Prow jobs, Konflux pipelines, release automation |
 | `Claude Plugins` | Claude Code plugins, skills, AI-assisted tooling |
-| `E2E Tests` | End-to-end test suites and test infrastructure |
 | `Documentation` | Developer guides, authoring guides, reference docs, pattern docs |
-| `Infra` | Operator, Helm umbrella charts, deployment scripts |
-| `Message Broker` | Shared broker library (Pub/Sub, RabbitMQ, CloudEvents) |
+| `E2E Tests` | End-to-end test suites and test infrastructure |
 | `OCI` | OCI artifact distribution, Helm chart publishing |
-| `Sentinel` | Sentinel reconciliation service, decision engine |
 
 > **Nota:** O repo de arquitetura usa o nome "Infrastructure" mas no JIRA o componente se chama "Infra".
 
 Regras de sugestão:
 - summary/descrição menciona API, search, query, database, config, presenter, middleware, handler: `API`
 - menciona adapter, task-config, transport, DSL, CEL, resource lifecycle: `Adapter`
+- menciona applier, desire store, desire transport, remote applier connectivity: `Applier`
+- menciona operator, HyperFleetConfig, CRD, OLM bundle, bundle controller: `Operator`
 - menciona sentinel, watcher, decision, evaluation, reconciliation engine: `Sentinel`
 - menciona architecture, ADR, design, standards, working agreement: `Architecture`
-- menciona operator, applier, helm, deployment, install, CRD, OLM: `Infra`
+- menciona helm umbrella chart, deployment script: `Infra`
 - menciona prow, konflux, pipeline, CI, release automation: `CICD`
 - menciona e2e, end-to-end, test suite, test infrastructure: `E2E Tests`
 - menciona claude, plugin, skill, AI tooling: `Claude Plugins`
@@ -63,12 +74,14 @@ Regras de sugestão:
 - menciona broker, pub/sub, rabbitmq, cloudevents, message: `Message Broker`
 - menciona OCI, artifact, chart publishing: `OCI`
 
+Combinando componentes: a maioria dos tickets precisa de só um componente de domínio. Adicione um componente transversal junto quando o entregável principal do ticket for esse tipo de artefato em vez de código — ex: uma spike de decisão que vive no domínio Applier ganha `Applier` + `Architecture`; um guia documentando o contrato de CR do Operator ganha `Operator` + `Documentation`. Não combine dois componentes de domínio — se o ticket realmente abrange dois sistemas, sugira quebrar o ticket ou escolher o domínio onde está a maior parte do trabalho.
+
 Por Epic:
 - HYPERFLEET-165: `API`
 - HYPERFLEET-404: `Sentinel`
 - HYPERFLEET-406: `Adapter`
-- HYPERFLEET-1403: `Infra`
-- HYPERFLEET-1418: `Infra`
+- HYPERFLEET-1403: `Operator`
+- HYPERFLEET-1418: `Applier`
 
 Se ambíguo, sugerir baseado no contexto geral.
 

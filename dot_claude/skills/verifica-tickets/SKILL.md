@@ -95,6 +95,6 @@ Use os templates definidos em [output-template.md](output-template.md) para:
 ## Regras
 
 - Use o jira CLI para todas as operações
-- Mostre URLs completas dos tickets (https://redhat.atlassian.net/browse/HYPERFLEET-XXX)
+- Toda menção a um ticket em qualquer parte da saída (título da análise individual, Resumo Executivo, Flags para Tech Leads, observações sobre duplicados/dependências/links) deve usar o link completo em formato markdown `[HYPERFLEET-XXX](https://redhat.atlassian.net/browse/HYPERFLEET-XXX)` — nunca a chave nua (ex: `HYPERFLEET-XXX` sem link)
 - Análise em português
 - Seja objetivo nas recomendações
