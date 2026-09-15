@@ -7,39 +7,15 @@
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-5",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-4-5@20251001"
   },
-  "model": "opus",
+  "model": "haiku",
   "statusLine": {
     "type": "command",
     "command": "ccstatusline",
     "padding": 0,
     "refreshInterval": 10
   },
-  "enabledPlugins": {
-    "hyperfleet-architecture@hyperfleet-claude-plugins": true,
-    "hyperfleet-code-review@hyperfleet-claude-plugins": true,
-    "hyperfleet-hooks@hyperfleet-claude-plugins": true,
-    "hyperfleet-jira@hyperfleet-claude-plugins": true,
-    "hyperfleet-operational-readiness@hyperfleet-claude-plugins": true,
-    "hyperfleet-release@hyperfleet-claude-plugins": true,
-    "hyperfleet-standards@hyperfleet-claude-plugins": true,
-    "hyperfleet-work-triage@hyperfleet-claude-plugins": true,
-    "ocp-fleet-agentic-sdlc@ocp-fleet-agentic-sdlc": true,
-    "hyperfleet-devtools@hyperfleet-claude-plugins": true
-  },
-  "extraKnownMarketplaces": {
-    "hyperfleet-claude-plugins": {
-      "source": {
-        "source": "git",
-        "url": "git@github.com:openshift-hyperfleet/hyperfleet-claude-plugins.git"
-      }
-    },
-    "ocp-fleet-agentic-sdlc": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/rafael/projetos/OCM-new/agentic-sdlc"
-      }
-    }
-  },
+  "enabledPlugins": {},
+  "extraKnownMarketplaces": {},
   "tui": "default",
   "skipDangerousModePermissionPrompt": true
 }
