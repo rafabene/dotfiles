@@ -54,15 +54,17 @@ Checagens positivas:
 - `Context` é um parágrafo e enuncia o problema, não a história.
 - Cada frase de `Decision` compromete-se com algo (um leitor poderia discordar).
 - `Alternatives` é uma tabela e cada linha rejeitada tem uma razão.
-- Todo item adiado nomeia o ticket ou documento dono.
+- Todo item adiado nomeia o documento dono (nunca um ticket).
 - O documento inteiro é lido em menos de cinco minutos.
 
 Comentários em ADR:
 
-- Um comentário de review em um ADR é respondido com (a) uma decisão, (b) um ponteiro para onde o detalhe vive, ou (c) uma nota de que está fora de escopo, com o ticket que o possui — **nunca** com um procedimento.
+- Um comentário de review em um ADR é respondido com (a) uma decisão, (b) um ponteiro para onde o detalhe vive, ou (c) uma nota de que está fora de escopo, apontando o documento (ou o ticket) que o possui na resposta do review — **nunca** com um procedimento, e **nunca** colocando essa referência dentro do ADR.
 - Se o comentário só se resolve adicionando detalhe de implementação, ele pertence ao DDR: peça o DDR ou peça o ticket que vai produzi-lo.
-- O Jira não é fonte de verdade para decisões de arquitetura: o ADR é, e os ADRs sobrevivem aos tickets que os originaram.
+- **ADRs não citam tickets** — nem link do Jira, nem identificador solto (`HYPERFLEET-XXXX`): o Jira não é fonte de verdade para decisões de arquitetura e os ADRs sobrevivem aos tickets que as originaram.
 
 ## Referências de tickets
 
-Quando um documento referenciar um ticket, aponte-o para o Jira (`https://redhat.atlassian.net/browse/<TICKET>`) sempre que o formato do documento permitir — por exemplo, nas linhas de cabeçalho `**Jira**:`/`**Related**:` de ADRs e design docs, ou inline quando um ticket for dono de trabalho adiado. Não deixe um identificador `HYPERFLEET-XXXX` solto onde um link for possível.
+Em design docs/DDRs, quando um documento referenciar um ticket, aponte-o para o Jira (`https://redhat.atlassian.net/browse/<TICKET>`) sempre que o formato do documento permitir — por exemplo, nas linhas de cabeçalho `**Jira**:`/`**Related**:`, ou inline quando um ticket for dono de trabalho adiado. Não deixe um identificador `HYPERFLEET-XXXX` solto onde um link for possível.
+
+**ADRs são a exceção:** não referenciam tickets — nem link, nem chave solta. O que estiver adiado aponta para um documento dono (DDR, spike ou outro ADR).
