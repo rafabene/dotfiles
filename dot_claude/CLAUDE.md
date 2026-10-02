@@ -10,7 +10,8 @@
 - Sempre verifique os arquivos markdown para evitar o MD040
 - Sempre que fizer a revisão de um comentário na PR, ao final da correção, commit e push; adicione uma resposta ao comentário usando `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies` para que o reply fique dentro do thread do comentário. Nunca use `gh pr comment` para responder review comments.
 - Sempre que eu colar um comentário, responda-o logo abaixo.
-- Sempre procure manter 1 commit na PR ou fazendo squash dos existentes, ou fazendo ammend se existe apenas 1.
+- Durante a revisão de uma PR, prefira adicionar commits de correção em vez de alterar commits existentes com `--amend` e fazer force-push, para que o revisor consiga identificar facilmente o que mudou desde a última revisão.
+- Antes de integrar a PR, faça squash dos commits para manter um único commit na branch principal.
 - Use sempre commits assinados
 - Deixe textos puro para eu copiar e colar sem os caracteres ▎ em cada linha
 - Nunca use HYPERFLEET-XXXX no titulo de tickets

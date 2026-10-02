@@ -7,7 +7,8 @@
 - Sempre use commits assinados.
 - Sempre coloque o id do ticket nos commits e no título das PRs, quando existir um ticket.
 - Nunca use `HYPERFLEET-XXXX` no título de tickets.
-- Mantenha 1 commit por PR: faça squash dos existentes ou `--amend` quando houver apenas um.
+- Durante a revisão de uma PR, adicione commits de correção em vez de alterar commits existentes com `--amend` e fazer force-push, para que o revisor consiga identificar facilmente o que mudou desde a última revisão.
+- Antes de integrar a PR, faça squash dos commits para manter um único commit na branch principal.
 
 ## Markdown
 
