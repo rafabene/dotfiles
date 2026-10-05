@@ -4,7 +4,7 @@
   "actions": {
     "ia-workspace": {
       "type": "workspaceCommand",
-      "title": "Claude Workspace",
+      "title": "OpenCode Workspace",
       "commandName": "IA",
       "shortcut": "cmd+j",
       "palette": true
@@ -21,14 +21,14 @@
     {
       "name": "IA",
       "workspace": {
-        "name": "Claude",
+        "name": "OpenCode",
         "layout": {
           "pane": {
             "surfaces": [
               {
                 "type": "terminal",
-                "name": "Claude",
-                "command": "claude",
+                "name": "OpenCode · GPT-6 Luna",
+                "command": "opencode",
                 "focus": true
               }
             ]
@@ -47,23 +47,23 @@
               {
                 "type": "terminal",
                 "name": "Oq Fiz hoje",
-                "command": "claude /oq-fiz-ontem",
+                "command": "opencode --prompt 'Leia e siga as instruções de /Users/rafael/.claude/commands/oq-fiz-ontem.md para montar o resumo de ontem.'",
                 "focus": true
               },
               {
                 "type": "terminal",
                 "name": "Sprint Status",
-                "command": "claude /hyperfleet-jira:sprint-status"
+                "command": "opencode --prompt 'Leia e siga /Users/rafael/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-jira/commands/sprint-status.md para gerar o status da sprint HYPERFLEET.'"
               },
               {
                 "type": "terminal",
                 "name": "Renovate PRs",
-                "command": "claude /hyperfleet-devtools:renovate-prs"
+                "command": "opencode --prompt 'Leia e siga a skill em /Users/rafael/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-devtools/skills/renovate-prs/SKILL.md. Para coletar os dados, execute bash /Users/rafael/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-devtools/skills/renovate-prs/scripts/collect-data.sh.'"
               },
               {
                 "type": "terminal",
                 "name": "Verifica Tickets",
-                "command": "claude /verifica-tickets"
+                "command": "opencode --prompt 'Siga a skill @verifica-tickets para verificar tickets recentes. Use o período padrão da skill.'"
               }
             ]
           }
