@@ -47,7 +47,7 @@
               {
                 "type": "terminal",
                 "name": "Oq Fiz hoje",
-                "command": "opencode mini --prompt 'Leia e siga as instruções de /Users/rafael/.claude/commands/oq-fiz-ontem.md para montar o resumo de ontem.'",
+                "command": "opencode mini --prompt '/oq-fiz-ontem'",
                 "focus": true
               },
               {
