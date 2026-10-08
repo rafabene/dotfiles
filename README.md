@@ -25,6 +25,13 @@ Dotfiles gerenciados com [chezmoi](https://www.chezmoi.io/) e encriptados com [a
 - `~/.config/.jira/config.yml` — Jira CLI config
 - `~/.config/gh/config.yml` — GitHub CLI config
 - `~/.config/cmux/cmux.json` — cmux config
+- `~/.config/opencode/opencode.json` — configuração do OpenCode e providers (sem credenciais)
+
+As credenciais do OpenCode, incluindo a chave EnMaaS, ficam no banco de dados local do OpenCode e não são sincronizadas pelo chezmoi. Em uma máquina nova, autentique o provider novamente:
+
+```bash
+opencode auth login redhat --method key
+```
 
 ### Claude Code
 
