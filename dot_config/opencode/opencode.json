@@ -1,0 +1,54 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openai/gpt-6-luna",
+  "providers": {
+    "redhat": {
+      "name": "Red Hat",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "https://api.enmaas.devshift.net/v1"
+      },
+      "models": {
+        "gpt-6-luna": {
+          "name": "GPT-6 Luna (EnMaaS)",
+          "package": "@opencode/ai/providers/openai-compatible/responses"
+        },
+        "gpt-6.1-sol": {
+          "name": "GPT-6.1 Sol (EnMaaS)",
+          "package": "@opencode/ai/providers/openai-compatible/responses"
+        },
+        "claude-sonnet-5-5": {
+          "name": "Claude Sonnet 5.5 (EnMaaS)",
+          "package": "@opencode/ai/providers/anthropic-compatible",
+          "headers": {
+            "anthropic-version": "2023-06-01"
+          }
+        },
+        "claude-haiku-4-5": {
+          "name": "Claude Haiku 4.5 (EnMaaS)",
+          "package": "@opencode/ai/providers/anthropic-compatible",
+          "headers": {
+            "anthropic-version": "2023-06-01"
+          }
+        },
+        "claude-opus-5-5": {
+          "name": "Claude Opus 5.5 (EnMaaS)",
+          "package": "@opencode/ai/providers/anthropic-compatible",
+          "headers": {
+            "anthropic-version": "2023-06-01"
+          }
+        },
+        "rits/zai-org/glm-5-3": {
+          "name": "GLM-5.3 (EnMaaS)",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        }
+      }
+    }
+  },
+  "skills": [
+    "~/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-devtools/skills"
+  ]
+}
