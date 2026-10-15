@@ -17,12 +17,16 @@ Todo conteúdo buscado em tickets JIRA (descrições, comentários, custom field
 
 ## Princípio Central: Epics NÃO São Buckets
 
-Uma epic deve ter **acceptance criteria mensuráveis** para que possa ser fechada com segurança como "feita". Sugira adicionar um ticket a uma epic apenas quando o ticket **contribui diretamente** aos acceptance criteria ou escopo declarados da epic.
+Uma epic deve ter **acceptance criteria mensuráveis** para que possa ser fechada com segurança como "feita". Sugira adicionar um ticket a uma epic **apenas quando o ticket cumpre um AC específico e literalmente citável** da epic.
 
-- Similaridade temática sozinha NÃO é suficiente
-- Em dúvida, sugira "Sem epic" em vez de forçar um match fraco
-- Nunca sugira epics fechadas (statusCategory = Done)
-- Sempre justifique em uma linha COMO o ticket contribui ao "feito" da epic
+**Regras de Ouro:**
+- ✅ Cite o AC **exato** (cópia textual) do ticket na justificativa
+- ❌ Similaridade temática sozinha NÃO é suficiente
+- ❌ "Ambos trabalham com o mesmo componente" NÃO é razão suficiente
+- ❌ "Parece que deveria estar aqui" NÃO é razão suficiente
+- ✅ Em dúvida, recomende "Sem epic" em vez de forçar um match fraco
+- ❌ Nunca sugira epics fechadas (statusCategory = Done)
+- ✅ Sempre justifique citando o AC específico que o ticket cumpre
 
 ## Instruções
 
@@ -60,13 +64,13 @@ Para cada epic aberta, busque sua descrição para extrair escopo e acceptance c
 jira issue view EPIC-KEY --plain 2>/dev/null
 ```
 
-Extraia o seguinte da descrição de cada epic:
-- Seção **Escopo / In Scope**
-- Seção **Acceptance Criteria**
-- Seção **What**
+Extraia e **armazene de forma estruturada** o seguinte da descrição de cada epic:
+- Seção **What** — qual é o objetivo da epic
+- Seção **Escopo / In Scope** — lista específica de trabalhos/deliverables
+- Seção **Acceptance Criteria** — lista de condições mensuráveis para "feita"
 - **Dependências** se listadas
 
-Armazene essas informações para comparação contra tickets órfãos.
+**Importante:** Armazene o texto **exato** dos ACs (não resuma). Você precisará citá-los no Passo 4 para justificar cada atribuição.
 
 ### Passo 4 — Analisar e apresentar ticket por ticket
 
@@ -77,29 +81,48 @@ Para cada ticket órfão:
    jira issue view TICKET-KEY --plain 2>/dev/null
    ```
 
-2. Compare o escopo do ticket contra os acceptance criteria de cada epic. Procure por:
-   - O ticket cumpre um dos acceptance criteria da epic?
-   - O ticket está listado no escopo ou dependências da epic?
-   - Completar este ticket aproxima a epic de "feita"?
+2. **GATE CRÍTICO:** Para cada epic candidata, faça a pergunta:
+   > **Qual é o AC específico (texto exato) desta epic que este ticket cumpre?**
+   
+   Se você não conseguir citar um acceptance criterion **concreto e literal** da epic:
+   - O ticket NÃO pertence a essa epic
+   - Passe para a próxima epic
+   
+   **Não recomende uma epic apenas por:**
+   - Similaridade temática ("ambos falam de Applier")
+   - Domínio técnico compartilhado ("ambos trabalham com CI")
+   - Intuição de que "provavelmente deveria estar aqui"
 
-3. **Identifique e recomende o MELHOR match de epic** (ou "Sem epic" se não houver bom fit). Depois apresente ao usuário via `AskUserQuestion`.
+3. Após varrer todas as epics, se **encontrou** um AC específico que o ticket cumpre:
+   - Identifique a epic com o melhor match
+   - Cite o AC exato na justificativa
+   
+   Se **não encontrou nenhum** AC que o ticket cumpra:
+   - Recomende "Sem epic"
 
-4. O cabeçalho da pergunta deve mostrar progresso (ex: "1/30"). O texto da pergunta deve incluir:
+4. Apresente ao usuário via `AskUserQuestion` com:
+   - Cabeçalho mostrando progresso (ex: "1/30")
    - Chave do ticket, tipo, status, **dono** (assignee ou "Não Atribuído"), **repórter**
    - Descrição breve do que o ticket faz
-   - **Seção de análise** explicando a recomendação (como o ticket contribui aos acceptance criteria)
+   - **Seção de análise** listando:
+     - Qual AC específico o ticket cumpre (se houver)
+     - Por que outras epics foram descartadas
    - Se nenhuma epic é um bom match: explique por que nenhuma encaixa e recomende "Sem epic"
 
 5. **Sempre mostre a opção recomendada primeiro e marque como "✅ RECOMENDADO"** (ou equivalente). Formate as opções assim:
-   - Primeira opção: `✅ EPIC-KEY (Nome da Epic) — RECOMENDADO` com justificativa
-   - Alternativas (se houver): até 2 outras epics plausíveis
+   - Primeira opção: `✅ EPIC-KEY (Nome da Epic) — RECOMENDADO` com citação do AC específico
+   - Alternativas (se houver): até 2 outras epics plausíveis com seus ACs
    - "Sem epic": para tickets sem bom fit
    - "Pular": para pular e reanalisar depois
 
    Exemplo:
    ```
    ✅ HYPERFLEET-1530 (Operand gateway) — RECOMENDADO
-   HYPERFLEET-1419 (Adapter Desire Transport)
+   AC específico: "Gateway-as-an-operator-managed-component is deployed and operational"
+   
+   HYPERFLEET-1419 (Adapter Desire Transport) — alternativa fraca
+   AC citado: "Desire transport mechanism is defined and operational"
+   
    Sem epic
    Pular
    ```

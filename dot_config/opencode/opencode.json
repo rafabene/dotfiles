@@ -34,6 +34,9 @@
         "claude-opus-5-5": {
           "name": "Claude Opus 5.5 (EnMaaS)",
           "package": "@opencode/ai/providers/anthropic-compatible",
+          "compatibility": {
+            "supportsThinkingBlockBinding": false
+          },
           "headers": {
             "anthropic-version": "2023-06-01"
           }
@@ -41,11 +44,14 @@
         "rits/zai-org/glm-5-3": {
           "name": "GLM-5.3 (EnMaaS)",
           "limit": {
-            "context": 262144,
-            "output": 32768
+            "context": 1000000,
+            "output": 65536
           }
         }
-      }
+      },
+      "env": [
+        "ENMAAS_KEY"
+      ]
     }
   },
   "skills": [

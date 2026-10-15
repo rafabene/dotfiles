@@ -18,8 +18,12 @@
     "copy": "select"
   },
   "tabs": {
-    "mode": "auto",
+    "mode": "off",
     "layout": "vertical",
-    "indicators": "numbers"
+    "indicators": "numbers",
+    "scope": "cwd"
+  },
+  "scroll": {
+    "acceleration": true
   }
 }
