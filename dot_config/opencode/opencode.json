@@ -47,6 +47,9 @@
             "context": 1000000,
             "output": 65536
           }
+        },
+        "rits/deepseek-ai/DeepSeek-V4.1-Flash-1017": {
+          "name": "DeepSeek V4.1 Flash (EnMaaS)"
         }
       },
       "env": [
