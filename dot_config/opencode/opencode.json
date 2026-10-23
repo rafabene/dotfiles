@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "redhat/rits/zai-org/glm-5-3",
+  "model": "redhat/rits/deepseek-ai/DeepSeek-V4.1-Flash-1017",
   "providers": {
     "redhat": {
       "name": "Red Hat",
