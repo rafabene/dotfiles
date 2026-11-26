@@ -1,0 +1,18 @@
+{
+  "layer" : {
+    "bindings" : [
+      {
+        "action" : "client.tab.rename",
+        "keys" : [
+          "shift+cmd+r"
+        ],
+        "source" : "settings"
+      }
+    ],
+    "name" : "settings"
+  },
+  "migrations" : [
+    "bracket-characters"
+  ],
+  "version" : 1
+}

@@ -33,6 +33,14 @@ As credenciais do OpenCode, incluindo a chave EnMaaS, ficam no banco de dados lo
 opencode auth login redhat --method key
 ```
 
+### Rex
+
+- `~/.config/rex/init.lua` — Atalhos e ações do Rex (`cmd+j` abre uma aba do OpenCode, `cmd+d` abre o workspace New Day)
+- `~/Library/Application Support/com.superlogical.rex/Shortcuts/shortcuts.json` — Atalhos definidos nas Settings do app
+- `run_onchange_after_rex-defaults.sh` — Aplica com `defaults write` as preferências do app (tema, fonte, abas, sidebar)
+
+O arquivo `com.superlogical.rex.plist` não é versionado: ele mistura preferências com estado da máquina (posição das janelas, última sessão, atividade). Para incluir uma nova preferência, adicione a linha correspondente ao script. O script roda de novo sempre que o conteúdo muda.
+
 ### Claude Code
 
 - `~/.claude/CLAUDE.md` — Instruções globais
