@@ -22,6 +22,12 @@
 - A PR é integrada com squash: o histórico da branch não precisa estar organizado, só o título da PR. Faça rebase apenas quando necessário (ex.: resolver conflito).
 - Ao corrigir um comentário de review: faça commit e push e responda **dentro da thread** com `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies`. Nunca use `gh pr comment` para responder review.
 
+## Repositórios
+
+- Repositórios do HyperFleet ficam em `~/projetos/hyperfleet/<repo>`, com `origin` = `openshift-hyperfleet/<repo>` e `fork` = seu fork (`rafabene/<repo>`; no `architecture`, `rafabene/hyperfleet-architecture`). Antes de clonar, verifique se o clone já existe; só clone se não existir.
+- Cada ticket ganha uma branch `HYPERFLEET-XXX-descricao` criada a partir de `origin/main` no clone existente, sem worktree. Antes de trocar de branch, confira se não há mudanças não commitadas nem commits não enviados; se houver, pergunte.
+- Faça push para o `fork` e abra a PR contra o `origin`.
+
 ## Jira
 
 - Ao criar ou editar um ticket, não coloque a chave (ex.: `HYPERFLEET-123`) nem a de outro ticket no summary; o Jira já mostra a chave.

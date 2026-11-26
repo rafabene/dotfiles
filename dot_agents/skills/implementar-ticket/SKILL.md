@@ -43,13 +43,30 @@ Se a skill não estiver disponível, consulte o repositório `openshift-hyperfle
 
 ### 5. Criar branch
 
-- Atualize a branch local `main`: `git fetch origin && git checkout main && git pull origin main`
-- Fork the organisation repo if not already forked: `gh repo fork openshift-hyperfleet/<REPO> --clone=false 2>/dev/null`
-- Crie a branch a partir de `main` usando a convenção: `HYPERFLEET-XXX-brief-description`
+Siga a seção "Repositórios" do AGENTS.md global:
+
+- Use o clone existente em `~/projetos/hyperfleet/<REPO>`. Só clone se ele não existir:
 
 ```bash
-git checkout -b <TICKET_ID>-brief-description
+gh repo clone openshift-hyperfleet/<REPO> ~/projetos/hyperfleet/<REPO>
 ```
+
+- Garanta o remote `fork` apontando para o seu fork (cria o fork se não existir):
+
+```bash
+cd ~/projetos/hyperfleet/<REPO>
+git remote get-url fork 2>/dev/null || gh repo fork --remote --remote-name fork
+```
+
+- Se `git status --porcelain` não estiver vazio ou a branch atual tiver commits não enviados, **pare** e pergunte ao usuário antes de trocar de branch.
+- Crie a branch a partir de `origin/main`, com a convenção `HYPERFLEET-XXX-brief-description`:
+
+```bash
+git fetch origin
+git switch -c <TICKET_ID>-brief-description origin/main
+```
+
+- Faça push para o `fork` (`git push -u fork HEAD`) e abra a PR contra `openshift-hyperfleet/<REPO>`.
 
 ### 6. Planejar implementação
 
