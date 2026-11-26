@@ -12,7 +12,7 @@ Resumo das atividades do dia anterior baseado em Git e Jira, separado por organi
 | Org | Diretórios |
 |-----|------------|
 | **AvantPro** | `~/projetos/avantpro/*` |
-| **OCM (Red Hat)** | `~/projetos/OCM*`, `~/projetos/multicluster-observability-operator` |
+| **OCM (Red Hat)** | `~/projetos/OCM/*`, `~/projetos/hyperfleet/*` |
 
 ## Instruções
 
@@ -44,7 +44,7 @@ done
 Repita para OCM:
 
 ```bash
-for dir in ~/projetos/OCM*/ ~/projetos/OCM*/*/ ~/projetos/multicluster-observability-operator; do
+for dir in $(find ~/projetos/OCM ~/projetos/hyperfleet -mindepth 1 -maxdepth 1 -type d 2>/dev/null); do
   if [ -d "$dir/.git" ]; then
     git -C "$dir" fetch --all -q 2>/dev/null
   fi
@@ -70,7 +70,7 @@ done
 Repita para OCM:
 
 ```bash
-for dir in ~/projetos/OCM ~/projetos/OCM-new ~/projetos/multicluster-observability-operator; do
+for dir in $(find ~/projetos/OCM ~/projetos/hyperfleet -mindepth 1 -maxdepth 1 -type d 2>/dev/null); do
   if [ -d "$dir/.git" ]; then
     commits=$(git -C "$dir" log --all --author="$(git config user.name)" --since="YYYY-MM-DD" --until="YYYY-MM-DD" --oneline --format="%h %s (%ai)" 2>/dev/null)
     if [ -n "$commits" ]; then
@@ -80,8 +80,6 @@ for dir in ~/projetos/OCM ~/projetos/OCM-new ~/projetos/multicluster-observabili
   fi
 done
 ```
-
-Inclua também sub-repositórios em `~/projetos/OCM*/*/`.
 
 Substitua `YYYY-MM-DD` pelas datas calculadas (início e fim do dia de referência).
 
