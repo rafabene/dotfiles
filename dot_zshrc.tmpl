@@ -39,8 +39,8 @@ source <(kind completion zsh)
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# ── Secrets (encrypted by chezmoi) ───────────────────────────────────
-[ -f ~/.secrets.env ] && source ~/.secrets.env
+# Secrets live in ~/.zshenv, so non-interactive login shells (Rex blocks,
+# scripts) get them too. See ~/.zshenv.
 
 # ── OMP (Oh My Pi) ───────────────────────────────────
 if command -v omp &> /dev/null; then

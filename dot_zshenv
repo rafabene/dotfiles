@@ -1,0 +1,9 @@
+# ── Environment for every zsh ────────────────────────────────────────
+# .zshenv is read by every zsh, including non-interactive login shells.
+# Rex runs the cmd+j / cmd+d blocks as `zsh -l -c <command>`, which reads
+# .zprofile and .zshenv but NOT .zshrc — so anything the OpenCode model
+# credential needs (and anything else a non-interactive shell needs) must
+# live here, not in .zshrc.
+
+# ── Secrets (encrypted by chezmoi) ───────────────────────────────────
+[ -f ~/.secrets.env ] && source ~/.secrets.env
