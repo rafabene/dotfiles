@@ -1,0 +1,23 @@
+#!/bin/sh
+# Refreshes the Claude Code plugin marketplaces and installed plugins.
+# The marketplace checkout under ~/.claude/plugins/marketplaces is also read by
+# OpenCode (see "skills" in opencode.json), so this keeps both harnesses current.
+# Run daily by the com.rafabene.claude-plugins-update LaunchAgent.
+
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin"
+claude="$HOME/.local/bin/claude"
+log="$HOME/Library/Logs/claude-plugins-update.log"
+
+mkdir -p "$(dirname "$log")"
+[ -f "$log" ] && [ "$(wc -c < "$log")" -gt 1048576 ] && : > "$log"
+exec >>"$log" 2>&1
+
+echo "=== $(date '+%Y-%m-%dT%H:%M:%S%z')"
+
+"$claude" plugin marketplace update || echo "marketplace update failed"
+
+ids=$("$claude" plugin list --json | jq -r '.[].id') || exit 1
+for id in $ids; do
+  echo "-- $id"
+  "$claude" plugin update "$id" || echo "update failed: $id"
+done

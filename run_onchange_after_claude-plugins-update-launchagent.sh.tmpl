@@ -1,0 +1,12 @@
+#!/bin/sh
+# (Re)loads the LaunchAgent that runs update-claude-plugins daily.
+# plist hash: {{ include "private_Library/LaunchAgents/com.rafabene.claude-plugins-update.plist.tmpl" | sha256sum }}
+
+[ "$(uname -s)" = "Darwin" ] || exit 0
+
+label=com.rafabene.claude-plugins-update
+plist="$HOME/Library/LaunchAgents/$label.plist"
+domain="gui/$(id -u)"
+
+launchctl bootout "$domain/$label" 2>/dev/null || true
+launchctl bootstrap "$domain" "$plist"

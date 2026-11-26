@@ -42,11 +42,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Secrets live in ~/.zshenv, so non-interactive login shells (Rex blocks,
 # scripts) get them too. See ~/.zshenv.
 
-# ── OMP (Oh My Pi) ───────────────────────────────────
-if command -v omp &> /dev/null; then
-    eval "$(omp completions zsh)"
-fi
-
 # ── Powerlevel10k config ─────────────────────────────────────────────
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

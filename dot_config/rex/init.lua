@@ -45,7 +45,7 @@ rex.action{
       local view = rex.call("session.view", { session_id = target })
       local highest = 0
       for _, window in ipairs((view and view.windows) or {}) do
-        local n = tonumber(tostring(window.label or ""):match("opencode (%d+)"))
+        local n = tonumber((tostring(window.label or ""):match("opencode (%d+)")))
         if n ~= nil and n > highest then highest = n end
       end
       local new_window, err = rex.call("session.new_window", {
