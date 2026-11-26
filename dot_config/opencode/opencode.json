@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "enmaas/rits/zai-org/glm-5-3",
+  "model": "enmaas/rits/deepseek-ai/DeepSeek-V4.1-Flash-1017",
   "providers": {
     "redhat": {
       "name": "Red Hat",
@@ -68,6 +68,13 @@
       "models": {
         "rits/zai-org/glm-5-3": {
           "name": "GLM 5.3 (EnMaaS)",
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          }
+        },
+        "rits/deepseek-ai/DeepSeek-V4.1-Flash-1017": {
+          "name": "DeepSeek V4.1 Flash (EnMaaS)",
           "limit": {
             "context": 1048576,
             "output": 131072
