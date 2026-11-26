@@ -35,6 +35,8 @@ rex.action{
       if err ~= nil then error(err, 0) end
       target    = created.session_id
       window_id = created.initial_windows[1].window_id
+      local _, attach_err = rex.call("session.attach", { session_id = target })
+      if attach_err ~= nil then error(attach_err, 0) end
     else
       -- a window in another session only accepts this after the stream
       -- attaches to that session
@@ -57,11 +59,16 @@ rex.action{
 
     if ctx.client_id ~= nil and (ctx.origin == "key" or ctx.origin == "palette") then
       -- the app only learns about the new window after this action returns,
-      -- so a select by id sent now is ignored; open the session first and let
-      -- a second action pick the window once the app has caught up
+      -- so a select by id sent now can be ignored; open the session first and
+      -- let opencode_focus pick the window once the app has caught up. It runs
+      -- twice because switching sessions can still be in progress the first
+      -- time, which drops the selection.
       if ctx.session_id ~= target then
-        rex.client.queue("session.select", { session_id = target })
+        local select = { session_id = target }
+        if window_id ~= nil then select.window_id = window_id end
+        rex.client.queue("session.select", select)
       end
+      rex.client.queue("opencode_focus")
       rex.client.queue("opencode_focus")
     end
   end,
