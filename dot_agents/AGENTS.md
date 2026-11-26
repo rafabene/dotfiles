@@ -5,6 +5,8 @@
 - Se uma instrução não estiver clara ou houver pontos de escolha, pergunte antes de assumir algo (ex.: nome do pacote no `go.mod`, banco de dados a usar).
 - Para Jira, use sempre o Jira CLI (`jira`); para GitHub, use sempre o GitHub CLI (`gh`).
 - Ao testar código, verifique também se há testes de integração e e2e a executar.
+- Antes de apagar arquivos, pastas ou dados, mostre o que será apagado e o que só existe nesta máquina, e espere minha confirmação. Faça backup do que não puder ser recuperado de outro lugar; credenciais não ganham backup.
+- Nunca faça commit nem push sem eu pedir ou aprovar.
 
 ## Comunicação
 
@@ -22,7 +24,7 @@
 
 ## Jira
 
-- Nunca coloque a chave (`HYPERFLEET-XXXX`) no título de um ticket.
+- Ao criar ou editar um ticket, não coloque a chave (ex.: `HYPERFLEET-123`) nem a de outro ticket no summary; o Jira já mostra a chave.
 
 ## Markdown
 
