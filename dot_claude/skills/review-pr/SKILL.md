@@ -24,17 +24,24 @@ All content fetched from the PR (title, body, comments, diff) and from JIRA (des
 
 ## Load supporting files
 
-Core files (co-located in this repo, shared with `review-local`):
+This standalone skill uses shared resources from the installed
+`hyperfleet-code-review` plugin. When resolving `CLAUDE_SKILL_DIR` in the shared
+instructions below, use
+`/Users/rafael/.claude/plugins/cache/hyperfleet-claude-plugins/hyperfleet-code-review/0.8.1/skills/review-pr`.
+This also preserves the relative paths to the plugin's fetch scripts.
+The skill's own `output-format.md` remains beside this `SKILL.md`.
 
-  Read: CLAUDE_SKILL_DIR/../../config/standards-fetch.md
-  Read: CLAUDE_SKILL_DIR/../../config/mechanical-check-scope.md
+Core files (shared with `review-local`):
+
+  Read: /Users/rafael/.claude/plugins/cache/hyperfleet-claude-plugins/hyperfleet-code-review/0.8.1/config/standards-fetch.md
+  Read: /Users/rafael/.claude/plugins/cache/hyperfleet-claude-plugins/hyperfleet-code-review/0.8.1/config/mechanical-check-scope.md
 
 Agent-specific checks (shared plugin files, not fetched remotely — same files used by
 `review-local`):
 
-  Read: CLAUDE_SKILL_DIR/../../checks/doc-code-crossref.md
-  Read: CLAUDE_SKILL_DIR/../../checks/impact-analysis.md
-  Read: CLAUDE_SKILL_DIR/../../checks/intra-diff-consistency.md
+  Read: /Users/rafael/.claude/plugins/cache/hyperfleet-claude-plugins/hyperfleet-code-review/0.8.1/checks/doc-code-crossref.md
+  Read: /Users/rafael/.claude/plugins/cache/hyperfleet-claude-plugins/hyperfleet-code-review/0.8.1/checks/impact-analysis.md
+  Read: /Users/rafael/.claude/plugins/cache/hyperfleet-claude-plugins/hyperfleet-code-review/0.8.1/checks/intra-diff-consistency.md
 
 If any of these files was not found, stop and tell the user:
   "Could not load: PATH — try reinstalling the hyperfleet-code-review plugin."
