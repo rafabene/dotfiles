@@ -12,7 +12,7 @@ Resumo das atividades do dia anterior baseado em Git e Jira, separado por organi
 | Org | Diretórios |
 |-----|------------|
 | **AvantPro** | `~/projetos/avantpro/*` |
-| **OCM (Red Hat)** | `~/projetos/hyperfleet/*` |
+| **HyperFleet (Red Hat)** | `~/projetos/hyperfleet/*` |
 
 ## Instruções
 
@@ -27,7 +27,7 @@ date +%u
 - Se hoje é **segunda (1)**, **sábado (6)** ou **domingo (7)**: o "ontem" é **sexta-feira**
 - Nos demais dias: use o dia anterior normalmente
 
-Use `date -v-Nd "+%Y-%m-%d"` (macOS) para calcular a data correta, onde N é o número de dias a voltar (1 para dias normais, 3 para segunda, etc).
+Use `date -v-Nd "+%Y-%m-%d"` (macOS) para calcular a data correta, onde N é o número de dias a voltar: 1 nos dias normais, 3 na segunda, 1 no sábado e 2 no domingo.
 
 ### 1. Atualizar referências remotas (fetch)
 
@@ -41,7 +41,7 @@ for dir in ~/projetos/avantpro/*/; do
 done
 ```
 
-Repita para OCM:
+Repita para HyperFleet:
 
 ```bash
 for dir in $(find ~/projetos/hyperfleet -mindepth 1 -maxdepth 1 -type d 2>/dev/null); do
@@ -58,7 +58,7 @@ Para cada organização, itere nos repositórios e busque commits do dia de refe
 ```bash
 for dir in ~/projetos/avantpro/*/; do
   if [ -d "$dir/.git" ]; then
-    commits=$(git -C "$dir" log --all --author="$(git config user.name)" --since="YYYY-MM-DD" --until="YYYY-MM-DD" --oneline --format="%h %s (%ai)" 2>/dev/null)
+    commits=$(git -C "$dir" log --all --author="$(git config user.name)" --since="YYYY-MM-DD 00:00" --until="YYYY-MM-DD 23:59:59" --oneline --format="%h %s (%ai)" 2>/dev/null)
     if [ -n "$commits" ]; then
       echo "=== $(basename $dir) ==="
       echo "$commits"
@@ -67,12 +67,12 @@ for dir in ~/projetos/avantpro/*/; do
 done
 ```
 
-Repita para OCM:
+Repita para HyperFleet:
 
 ```bash
 for dir in $(find ~/projetos/hyperfleet -mindepth 1 -maxdepth 1 -type d 2>/dev/null); do
   if [ -d "$dir/.git" ]; then
-    commits=$(git -C "$dir" log --all --author="$(git config user.name)" --since="YYYY-MM-DD" --until="YYYY-MM-DD" --oneline --format="%h %s (%ai)" 2>/dev/null)
+    commits=$(git -C "$dir" log --all --author="$(git config user.name)" --since="YYYY-MM-DD 00:00" --until="YYYY-MM-DD 23:59:59" --oneline --format="%h %s (%ai)" 2>/dev/null)
     if [ -n "$commits" ]; then
       echo "=== $(basename $dir) ==="
       echo "$commits"
@@ -81,9 +81,9 @@ for dir in $(find ~/projetos/hyperfleet -mindepth 1 -maxdepth 1 -type d 2>/dev/n
 done
 ```
 
-Substitua `YYYY-MM-DD` pelas datas calculadas (início e fim do dia de referência).
+Substitua `YYYY-MM-DD` pela data de referência nos dois parâmetros e mantenha os horários: sem eles, o git usa a hora atual e `--since` igual a `--until` não retorna nada.
 
-**Nota importante:** Esta busca captura novos commits feitos no dia de referência. Para capturar **força-push e rebase** (commits força-empurrados para o remote), veja a **seção 4c** abaixo.
+**Nota importante:** Esta busca captura novos commits feitos no dia de referência. Para capturar **força-push e rebase** (commits força-empurrados para o remote), veja a **seção 4b** abaixo.
 
 ### 3. Buscar atividade no Jira
 
@@ -159,37 +159,24 @@ gh api "repos/openshift-hyperfleet/{repo}/issues/{number}/comments" \
 
 Inclua no resultado apenas as PRs que tiverem **soma > 0** nas três fontes acima.
 
-#### 4c. Capturar commits força-empurrados nas PRs abertas
+#### 4b. Capturar commits força-empurrados nas PRs abertas
 
-Rebases e força-push não são detectados por simples busca de commits no Git. Para capturar PRs onde você força-empurrou (rebase/squash) no dia de referência, verifique os commits das suas PRs abertas na organização `openshift-hyperfleet` usando `committedDate` (não `author.date`):
+Rebases e força-push não são detectados por simples busca de commits no Git. Para capturar PRs onde você força-empurrou (rebase/squash) no dia de referência, verifique a data de commit (`commit.committer.date`, não a de autoria) dos commits das suas PRs abertas na organização `openshift-hyperfleet`:
 
 ```bash
-GH_USER=$(gh api user --jq '.login')
-YYYY_MM_DD="YYYY-MM-DD"
+DAY="YYYY-MM-DD"
 
-# Buscar PRs abertas de minha autoria
 gh api search/issues -X GET \
   -f q="type:pr author:@me org:openshift-hyperfleet state:open" \
   -f per_page=50 \
-  --jq '.items[] | {repo: (.repository_url | split("/") | .[-1]), number}' | \
-while read -r line; do
-  repo=$(echo "$line" | jq -r '.repo')
-  number=$(echo "$line" | jq -r '.number')
-  
-  # Verificar commits com committedDate no dia de referência
-  commits=$(gh api "repos/openshift-hyperfleet/$repo/pulls/$number" \
-    --jq ".commits as \$count | .head.sha as \$head |
-    if \$count > 0 then
-      \"Check commits via API\"
-    else
-      empty
-    end" 2>/dev/null)
-  
-  # Alternativa mais simples: listar commits da PR
-  gh api "repos/openshift-hyperfleet/$repo/pulls/$number/commits" \
-    --jq "[.[] | select(.committedDate | startswith(\"$YYYY_MM_DD\") or .commit.committer.date | startswith(\"$YYYY_MM_DD\")) | {sha: .sha[0:7], repo, number, date: .commit.committer.date}] | .[]" 2>/dev/null
+  --jq '.items[] | "\(.repository_url | split("/") | .[-1]) \(.number)"' |
+while read -r repo number; do
+  gh api --paginate "repos/openshift-hyperfleet/$repo/pulls/$number/commits" \
+    --jq ".[] | select(.commit.committer.date | startswith(\"$DAY\")) | \"$repo#$number \(.sha[0:7]) \(.commit.committer.date)\""
 done
 ```
+
+A data vem em UTC: um commit feito à noite no horário local pode aparecer no dia seguinte.
 
 Essa verificação captura **força-push e rebase** que aconteceram no dia de referência, mesmo que o commit original seja mais antigo. Combine com os resultados da seção 4 (reviews) para ter a lista completa de PRs com atividade no dia.
 
@@ -197,7 +184,9 @@ Essa verificação captura **força-push e rebase** que aconteceram no dia de re
 
 Meetings não podem ser obtidas automaticamente de forma confiável (AppleScript/icalBuddy são lentos demais com calendários Exchange/Google). Use `X` como placeholder em ambas as seções para preenchimento manual.
 
-#### 5c. Tickets atribuídos a mim (In Progress, Backlog, New)
+### 6. Planejar o dia
+
+#### 6a. Tickets atribuídos a mim (In Progress, Backlog, New)
 
 Busque tickets do Jira que estão atribuídos a mim nos status relevantes:
 
@@ -209,7 +198,7 @@ jira issue list --assignee="$(jira me)" --status "New" --plain --columns "KEY,SU
 
 Combine os resultados removendo duplicatas. **Exclua tickets do tipo Epic e Feature** — eles não representam trabalho direto do dia. Priorize na seguinte ordem: In Progress primeiro, depois Backlog, depois New.
 
-#### 5d. Minhas PRs abertas no HyperFleet
+#### 6b. Minhas PRs abertas no HyperFleet
 
 Busque PRs abertas de minha autoria na organização `openshift-hyperfleet`:
 
@@ -220,7 +209,7 @@ gh api search/issues -X GET \
   --jq '.items[] | "\(.repository_url | split("/") | .[-1])#\(.number) - \(.title)"'
 ```
 
-### 6. Formato de saída
+### 7. Formato de saída
 
 A saída deve ser **texto puro** (sem markdown) pronto para colar no Slack. A resposta deve estar em **inglês**.
 
@@ -231,14 +220,14 @@ Informe qual data de referência foi usada como comentário antes do standup (ex
 Entregue o standup direto na área de transferência — não confie em bloco de código markdown na resposta, pois o TUI renderiza blocos de código com padding à esquerda e a cópia pelo terminal arrasta esses espaços junto:
 
 ```bash
-# 1. Escreva o standup (texto puro, sem markdown) em um arquivo no diretório temp aprovado
-#    ex: $TMPDIR/opencode/standup-YYYY-MM-DD.txt (use /private/var/folders/.../T/opencode)
+# 1. Escreva o standup (texto puro, sem markdown) em "$TMPDIR/opencode/standup-YYYY-MM-DD.txt"
+mkdir -p "$TMPDIR/opencode"
 
 # 2. Coloque na área de transferência
-pbcopy < /private/var/folders/.../T/opencode/standup-YYYY-MM-DD.txt
+pbcopy < "$TMPDIR/opencode/standup-YYYY-MM-DD.txt"
 ```
 
-Na resposta, siga o formato da seção 6: comentário da data de referência, o standup completo em bloco de código cercado (` ```text `) e a análise em português. O bloco serve apenas para conferência visual — a fonte da colagem é sempre o clipboard (Cmd+V), nunca a seleção do texto renderizado no TUI (que quebra linhas longas e arrasta padding). Sempre avise que o standup já está no clipboard e informe o caminho do arquivo salvo.
+Na resposta, siga o formato desta seção: comentário da data de referência, o standup completo em bloco de código cercado (` ```text `) e a análise em português. O bloco serve apenas para conferência visual — a fonte da colagem é sempre o clipboard (Cmd+V), nunca a seleção do texto renderizado no TUI (que quebra linhas longas e arrasta padding). Sempre avise que o standup já está no clipboard e informe o caminho do arquivo salvo.
 
 O formato é:
 
@@ -269,7 +258,7 @@ No
 - Agrupe commits e tickets por TICKET-ID. Se um commit referencia um ticket que também aparece no Jira, combine numa única linha
 - Para PR Reviews, liste todas numa única linha com os repos e números entre parênteses
 - Se não houver PRs revisadas no "yesterday", omita a linha de PR Reviews no "yesterday"
-- Se uma organização (AvantPro) tiver atividade, agrupe os itens sob um sub-heading com o nome da org em texto puro (ex: "AvantPro:" e "OCM (Red Hat):") dentro da seção "What did you accomplish yesterday?"
+- Se uma organização (AvantPro) tiver atividade, agrupe os itens sob um sub-heading com o nome da org em texto puro (ex: "AvantPro:" e "HyperFleet (Red Hat):") dentro da seção "What did you accomplish yesterday?"
 - Se apenas uma organização tiver atividade, não use sub-headings
 - **Blockers**: Mostrar "No" como placeholder para preenchimento manual
 - **Linha em branco** entre cada seção (após o último item de cada seção)

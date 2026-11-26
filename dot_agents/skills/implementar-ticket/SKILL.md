@@ -66,15 +66,15 @@ git fetch origin
 git switch -c <TICKET_ID>-brief-description origin/main
 ```
 
-- Faça push para o `fork` (`git push -u fork HEAD`) e abra a PR contra `openshift-hyperfleet/<REPO>`.
+Execute os passos seguintes dentro de `~/projetos/hyperfleet/<REPO>`.
 
 ### 6. Planejar implementação
 
-Analise o ticket e crie um plano de implementação usando TodoWrite.
+Analise o ticket e crie um plano de implementação como lista de tarefas, com a ferramenta de tarefas do agente, se houver.
 
 ### 7. Aguardar confirmação
 
-Apresente o plano e use AskUserQuestion para perguntar se pode prosseguir.
+Apresente o plano e pergunte ao usuário se pode prosseguir.
 
 ### 8. Implementar as mudanças
 
@@ -108,6 +108,8 @@ make integration-test
 
 Se o target não existir no Makefile, verifique como os testes de integração são executados no projeto.
 
+Verifique também se há testes e2e relacionados às mudanças (por exemplo, `test/e2e/` ou um target `make e2e*`). Se puderem rodar localmente, execute-os. Se dependerem de um cluster ou de infraestrutura indisponível, informe ao usuário quais testes ficaram sem rodar.
+
 ### 13. Executar lint
 
 ```bash
@@ -125,13 +127,13 @@ Corrija erros de lint antes de prosseguir.
 
 ### 15. Auto-revisão
 
-Aplique a auto-revisão completa sobre todo o código implementado/modificado nesta sessão:
+Leia [auto-review.md](auto-review.md) e execute todas as seções sobre o código implementado/modificado nesta sessão. Além disso:
 - Verifique lógica e clareza do código
 - Procure por edge cases não tratados
 - Verifique nomes de variáveis e funções (convenções do projeto)
 - Verifique error handling
 - Verifique tipos e null checks (se linguagem tipada)
-- Verifique se há console.logs ou prints de debug não removidos
+- Verifique se há prints ou logs de debug não removidos
 - Verifique se há código duplicado que poderia ser extraído
 
 ### 16. Finalização
@@ -145,10 +147,22 @@ Informe ao usuário:
 - Quais testes de integração foram criados/modificados
 - Quais documentações foram atualizadas
 - Resultado da auto-revisão (passo 15): quantos problemas foram encontrados e corrigidos em cada pass
+- Quais testes (integração ou e2e) não puderam ser executados, se houver
 - Que as mudanças estão prontas para revisão (sem commit)
 
 ### 17. Abrir VS Code
 
 ```bash
-code .
+code ~/projetos/hyperfleet/<REPO>
 ```
+
+### 18. Push e PR (só depois do commit)
+
+Não faça push nem abra a PR por conta própria. Só depois que o usuário commitar e pedir:
+
+```bash
+git push -u fork HEAD
+gh pr create --repo openshift-hyperfleet/<REPO> --head rafabene:<BRANCH>
+```
+
+O título da PR leva a chave do ticket (ex.: `HYPERFLEET-123: ...`).

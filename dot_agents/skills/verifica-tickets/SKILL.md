@@ -52,8 +52,6 @@ jira issue view <TICKET> --raw | jq '{
   created: .fields.created,
   summary: .fields.summary,
   summaryLength: (.fields.summary | length),
-  description: .fields.description,
-  descriptionLength: (.fields.description | length),
   priority: .fields.priority.name,
   status: .fields.status.name,
   assignee: (.fields.assignee.displayName // "Unassigned"),
@@ -68,6 +66,12 @@ jira issue view <TICKET> --raw | jq '{
     linkedStatus: (.outwardIssue.fields.status.name // .inwardIssue.fields.status.name)
   }]
 }'
+```
+
+No `--raw`, a descrição vem em ADF (JSON do Jira Cloud), e não em texto. Para ler a descrição e verificar as seções, use:
+
+```bash
+jira issue view <TICKET> --plain
 ```
 
 Note que `direction` já vem com o rótulo correto ("blocks" ou "is blocked by"), não apenas o nome genérico do tipo de link — isso é necessário para o passo 3.5.

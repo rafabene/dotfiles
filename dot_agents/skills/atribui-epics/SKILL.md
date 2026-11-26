@@ -59,7 +59,7 @@ Epic tem acceptance criteria para poder ser **fechada**. Adicionar bugs a uma ep
 Busque os tickets abertos que não são Epic, Feature ou Sub-task **e que não têm parent** — o JQL faz a filtragem de hierarquia, não o `parent` no JSON:
 
 ```bash
-jira issue list -q 'project = HYPERFLEET AND issuetype not in (Epic, Feature, Sub-task) AND statusCategory != Done AND parent is EMPTY' --raw 2>/dev/null > /tmp/hf-orphan-candidates.json
+jira issue list -q 'project = HYPERFLEET AND issuetype not in (Epic, Feature, Sub-task) AND statusCategory != Done AND parent is EMPTY' --raw 2>/dev/null > "$TMPDIR/hf-orphan-candidates.json"
 ```
 
 Exclua em código os tickets já rotulados `no-epic-needed` (o JQL não serve para isso — ver armadilhas abaixo):
@@ -69,8 +69,8 @@ jq -r '.[] | select((.fields.labels | index("no-epic-needed")) == null)
        | [.key, .fields.issueType.name, .fields.status.name,
           ((.fields.assignee.displayName // "") | if . == "" then "Unassigned" else . end),
           .fields.summary] | @tsv' \
-  /tmp/hf-orphan-candidates.json > /tmp/hf-orphans.tsv
-wc -l < /tmp/hf-orphans.tsv
+  "$TMPDIR/hf-orphan-candidates.json" > "$TMPDIR/hf-orphans.tsv"
+wc -l < "$TMPDIR/hf-orphans.tsv"
 ```
 
 O resultado do JQL já é a lista de órfãos: `parent is EMPTY` significa sem epic. Construa a lista final com key, summary, type e status a partir do TSV. O campo de tipo (`issuetype.name`) decide o caminho padrão no Passo 4: tickets do tipo `Bug` começam em "Sem epic". Confirme o `parent` de algum ticket pontual (útil quando o `parent` aparece no JSON mas a query diz o contrário):
@@ -213,7 +213,7 @@ jira issue edit TICKET-KEY --parent EPIC-KEY --no-input 2>/dev/null
 Confirme sucesso verificando:
 
 ```bash
-jira issue view TICKET-KEY --raw 2>/dev/null | python3 -c "import json,sys; d=json.load(sys.stdin); p=d.get('fields',{}).get('parent'); print(f'Pai: {p[\"key\"]}' if p else 'Sem pai definido')"
+jira issue view TICKET-KEY --raw 2>/dev/null | jq -r '.fields.parent.key // "Sem pai definido"'
 ```
 
 Se o usuário seleciona "Sem epic", adicione o label `no-epic-needed` para evitar reprocessamento em futuras execuções (é o caminho esperado para **todos os bugs** que não sejam exceção):

@@ -4,7 +4,7 @@ Análise de impacto e consistência aplicada sobre todo o código implementado/m
 
 ## a. Impact analysis
 
-Para cada struct, campo de config ou assinatura de função modificada, busque no codebase (`Grep`/`Glob`) por callers que possam precisar de atualização.
+Para cada struct, campo de config ou assinatura de função modificada, busque no codebase por callers que possam precisar de atualização.
 
 Verifique se algum arquivo **deveria ter sido modificado mas não foi** (ex: um Helm template que renderiza um campo cujo tipo mudou).
 
@@ -18,7 +18,7 @@ Para mudanças em documentação, rastreie o caminho completo de implementação
 
 Se a mudança introduz N opções/operadores/campos/modos, verifique que TODOS os N funcionam em TODOS os contextos.
 
-Use o Agent tool com subagent_type=Explore se a call chain abrange mais de 3 arquivos.
+Se a call chain abrange mais de 3 arquivos, delegue a exploração a um subagente de exploração, se o agente oferecer um.
 
 ## c. Doc <-> Code cross-referencing
 
@@ -28,11 +28,9 @@ Use o Agent tool com subagent_type=Explore se a call chain abrange mais de 3 arq
 
 ## d. Mechanical code pattern checks
 
-Execute os passes mecânicos de código definidos em [../review-pr/mechanical-passes.md](../review-pr/mechanical-passes.md).
+Use a skill `review-local` (plugin `hyperfleet-code-review`) com o escopo `uncommitted`, já que nada foi commitado. Ela revisa as mudanças da branch contra os standards do HyperFleet e inclui as checagens mecânicas. Ela só lê e não faz commit.
 
-**Diferença de escopo:** No contexto de implementação, aplique os passes sobre **todo o código modificado nesta sessão** (não sobre um diff de PR). O objetivo é o mesmo: enumerar instâncias primeiro, depois julgar.
-
-Lance os 5 grupos de agentes em paralelo, passando o código modificado e a lista de arquivos alterados.
+Se a skill não estiver disponível, faça as checagens à mão sobre todo o código modificado nesta sessão: enumere primeiro todas as instâncias de cada padrão (erros ignorados, recursos sem `Close`/`defer`, goroutines sem cancelamento, logs e mensagens de erro fora do padrão, segredos ou valores fixos no código) e só depois julgue cada uma.
 
 ## e. Intra-implementation consistency
 
