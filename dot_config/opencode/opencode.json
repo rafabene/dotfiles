@@ -70,21 +70,5 @@
     "~/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-standards/skills",
     "~/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-release/skills",
     "~/.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-operational-readiness/skills"
-  ],
-  "mcp": {
-    "servers": {
-      "jev": {
-        "type": "local",
-        "command": [
-          "/opt/homebrew/bin/jev",
-          "mcp",
-          "serve",
-          "--model",
-          "jev-1.13.0",
-          "--max-cost-usd-per-call",
-          "0.001"
-        ]
-      }
-    }
-  }
+  ]
 }
