@@ -35,10 +35,6 @@ autoload -U +X bashcompinit && bashcompinit
 source <(podman completion zsh)
 source <(kind completion zsh)
 
-# ── SDK Managers ─────────────────────────────────────────────────────
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # Secrets live in ~/.zshenv, so non-interactive login shells (Rex blocks,
 # scripts) get them too. See ~/.zshenv.
 
@@ -56,9 +52,6 @@ export CLOUD_ML_REGION=global
 export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-5@default
 export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-5@default
 export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5@20251001
-# OMP (google-vertex provider) reads these:
-export GOOGLE_CLOUD_PROJECT=itpc-ca-fb292a90af
-export GOOGLE_CLOUD_LOCATION=global
 
 # OCI - HyperFleet (rhelcert tenancy) - durable API key auth.
 # Makes the `oci` CLI use the APIKEY profile (the DEFAULT profile is an expired
