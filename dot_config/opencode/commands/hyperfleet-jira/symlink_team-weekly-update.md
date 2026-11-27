@@ -1,0 +1,1 @@
+../../../../.claude/plugins/marketplaces/hyperfleet-claude-plugins/hyperfleet-jira/commands/team-weekly-update.md
